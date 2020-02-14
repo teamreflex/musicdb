@@ -20,6 +20,7 @@ class Artist extends Model
         'header_url',
         'icon_url',
         'logo_url',
+        'spotify_id',
     ];
 
     /**
@@ -40,5 +41,15 @@ class Artist extends Model
     public function members()
     {
         return $this->hasMany(Member::class);
+    }
+
+    /**
+     * Albums that this artist has.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function albums()
+    {
+        return $this->hasMany(Album::class);
     }
 }

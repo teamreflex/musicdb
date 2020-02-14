@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\Spotify\SpotifyService;
+use App\Services\Spotify\SpotifyServiceContract;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(SpotifyServiceContract::class, SpotifyService::class);
     }
 
     /**

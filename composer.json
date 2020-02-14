@@ -10,10 +10,12 @@
     "require": {
         "php": "^7.4",
         "fideloper/proxy": "^4.0",
-        "laravel/framework": "^6.0",
-        "laravel/airlock": "^0.2"
+        "jwilsson/spotify-web-api-php": "^3.0",
+        "laravel/airlock": "^0.2",
+        "laravel/framework": "^6.0"
     },
     "require-dev": {
+        "doctrine/dbal": "^2.10",
         "facade/ignition": "^1.4",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",

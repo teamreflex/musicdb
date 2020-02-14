@@ -17,7 +17,7 @@
             <div class="col px-0">
                 <div class="row" v-for="artist in artists" :key="'artist-' + artist.id">
                     <div class="col-2">
-                        <img v-lazy="artist.logo_url" :alt="artist.name_en"
+                        <img v-lazy="artist.icon_url" :alt="artist.name_en"
                              class="img-fluid rounded-circle shadow-lg" style="width: 150px;">
                     </div>
 

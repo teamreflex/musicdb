@@ -13,10 +13,15 @@ class Album extends Model
         'name_kr',
         'name_romanized',
         'description',
-        'spotify',
+        'spotify_id',
         'header_url',
         'icon_url',
         'logo_url',
+        'release_date',
+    ];
+
+    protected $dates = [
+        'release_date',
     ];
 
     /**
