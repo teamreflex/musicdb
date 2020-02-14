@@ -19,7 +19,7 @@ $factory->define(Album::class, function (Faker $faker) {
         'name_kr' => $faker->name,
         'name_romanized' => $faker->name,
         'description' => $faker->sentence(),
-        'spotify' => $faker->userName,
+        'spotify_id' => $faker->userName,
         'header_url' => null,
         'icon_url' => null,
         'logo_url' => null,
