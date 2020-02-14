@@ -1,3 +1,5 @@
+![Tests](https://github.com/teamreflex/musicdb/workflows/Testing%20Laravel/badge.svg)
+
 ## Requirements
 - PHP 7.4
     - Refer to Laravel 6 documentation for PHP requirements
