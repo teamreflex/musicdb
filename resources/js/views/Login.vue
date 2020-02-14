@@ -23,13 +23,18 @@
                             </div>
                             <div class="btn-wrapper text-center">
                                 <base-button type="neutral">
-                                    <img slot="icon" src="img/icons/common/github.svg">
-                                    Github
+                                    <i class="fa fa-twitter" />
+                                    Twitter
                                 </base-button>
 
                                 <base-button type="neutral">
-                                    <img slot="icon" src="img/icons/common/google.svg">
-                                    Google
+                                    <i class="fa fa-spotify" />
+                                    Spotify
+                                </base-button>
+
+                                <base-button type="neutral">
+                                    <i class="fa fa-lastfm" />
+                                    Last.fm
                                 </base-button>
                             </div>
                         </template>
@@ -39,11 +44,13 @@
                             </div>
                             <form role="form">
                                 <base-input alternative
+                                            v-model="form.email"
                                             class="mb-3"
                                             placeholder="Email"
                                             addon-left-icon="ni ni-email-83">
                                 </base-input>
                                 <base-input alternative
+                                            v-model="form.password"
                                             type="password"
                                             placeholder="Password"
                                             addon-left-icon="ni ni-lock-circle-open">
@@ -52,7 +59,7 @@
                                     Remember me
                                 </base-checkbox>
                                 <div class="text-center">
-                                    <base-button type="primary" class="my-4">Sign In</base-button>
+                                    <base-button type="primary" class="my-4" @click="login">Sign In</base-button>
                                 </div>
                             </form>
                         </template>
@@ -64,9 +71,9 @@
                             </a>
                         </div>
                         <div class="col-6 text-right">
-                            <a href="#" class="text-light">
+                            <router-link :to="{ name: 'register' }" class="text-light">
                                 <small>Create new account</small>
-                            </a>
+                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -75,7 +82,31 @@
     </section>
 </template>
 <script>
-export default {};
+    export default {
+        data() {
+            return {
+                form: {
+                    email: null,
+                    password: null,
+                },
+            };
+        },
+
+        methods: {
+            login() {
+                axios.get('/airlock/csrf-cookie')
+                    .then(response => {
+                        axios.post('/api/login', this.form)
+                            .then(response => {
+                                console.log(response);
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            })
+                    });
+            },
+        }
+    };
 </script>
 <style>
 </style>

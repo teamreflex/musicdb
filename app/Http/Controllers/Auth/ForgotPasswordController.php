@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller
@@ -21,12 +22,13 @@ class ForgotPasswordController extends Controller
     use SendsPasswordResetEmails;
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * ForgotPasswordController constructor.
+     * @param ResponseFactory $response
      */
-    public function __construct()
+    public function __construct(ResponseFactory $response)
     {
+        parent::__construct($response);
+
         $this->middleware('guest');
     }
 }

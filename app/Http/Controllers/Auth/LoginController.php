@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -25,15 +26,16 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * LoginController constructor.
+     * @param ResponseFactory $response
      */
-    public function __construct()
+    public function __construct(ResponseFactory $response)
     {
+        parent::__construct($response);
+
         $this->middleware('guest')->except('logout');
     }
 }

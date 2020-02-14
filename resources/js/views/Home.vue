@@ -1,13 +1,15 @@
 <template>
-    <h2>Home</h2>
+    <div>
+        <hero></hero>
+    </div>
 </template>
-
 <script>
+    import Hero from "./components/Hero";
+
     export default {
-
-    }
+        name: "home",
+        components: {
+            Hero,
+        }
+    };
 </script>
-
-<style>
-
-</style>

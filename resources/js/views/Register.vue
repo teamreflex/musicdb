@@ -23,13 +23,18 @@
                             </div>
                             <div class="btn-wrapper text-center">
                                 <base-button type="neutral">
-                                    <img slot="icon" src="img/icons/common/github.svg">
-                                    Github
+                                    <i class="fa fa-twitter" />
+                                    Twitter
                                 </base-button>
 
                                 <base-button type="neutral">
-                                    <img slot="icon" src="img/icons/common/google.svg">
-                                    Google
+                                    <i class="fa fa-spotify" />
+                                    Spotify
+                                </base-button>
+
+                                <base-button type="neutral">
+                                    <i class="fa fa-lastfm" />
+                                    Last.fm
                                 </base-button>
                             </div>
                         </template>
@@ -39,32 +44,36 @@
                             </div>
                             <form role="form">
                                 <base-input alternative
+                                            v-model="form.username"
                                             class="mb-3"
-                                            placeholder="Name"
+                                            placeholder="Username"
                                             addon-left-icon="ni ni-hat-3">
                                 </base-input>
                                 <base-input alternative
+                                            v-model="form.email"
                                             class="mb-3"
                                             placeholder="Email"
                                             addon-left-icon="ni ni-email-83">
                                 </base-input>
                                 <base-input alternative
+                                            v-model="form.password"
                                             type="password"
                                             placeholder="Password"
                                             addon-left-icon="ni ni-lock-circle-open">
                                 </base-input>
-                                <div class="text-muted font-italic">
-                                    <small>password strength:
-                                        <span class="text-success font-weight-700">strong</span>
-                                    </small>
-                                </div>
-                                <base-checkbox>
-                                    <span>I agree with the
-                                        <a href="#">Privacy Policy</a>
-                                    </span>
-                                </base-checkbox>
+                                <base-input alternative
+                                            v-model="form.password_confirmation"
+                                            type="password"
+                                            placeholder="Confirm Password"
+                                            addon-left-icon="ni ni-lock-circle-open">
+                                </base-input>
+<!--                                <base-checkbox>-->
+<!--                                    <span>I agree with the-->
+<!--                                        <a href="#">Privacy Policy</a>-->
+<!--                                    </span>-->
+<!--                                </base-checkbox>-->
                                 <div class="text-center">
-                                    <base-button type="primary" class="my-4">Create account</base-button>
+                                    <base-button type="primary" class="my-4" @click="register">Create account</base-button>
                                 </div>
                             </form>
                         </template>
@@ -75,7 +84,30 @@
     </section>
 </template>
 <script>
-export default {};
+    export default {
+        data() {
+            return {
+                form: {
+                    username: null,
+                    email: null,
+                    password: null,
+                    password_confirmation: null,
+                },
+            };
+        },
+
+        methods: {
+            register() {
+                axios.post('/api/register', this.form)
+                    .then(response => {
+                        console.log(response);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            },
+        }
+    };
 </script>
 <style>
 </style>
