@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import AppHeader from "./layout/AppHeader";
 import AppFooter from "./layout/AppFooter";
+import Index from "./views/Index.vue";
 import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
@@ -16,6 +17,15 @@ export default new Router({
     routes: [
         {
             path: "/",
+            name: "index",
+            components: {
+                header: AppHeader,
+                default: Index,
+                footer: AppFooter
+            }
+        },
+        {
+            path: "/home",
             name: "home",
             components: {
                 header: AppHeader,

@@ -2,7 +2,11 @@
     <div id="app">
         <router-view name="header"></router-view>
         <main>
-            <fade-transition origin="center" mode="out-in" :duration="250">
+            <div v-if="busy">
+                <i class="fa fa-spin fa-spinner" />
+            </div>
+
+            <fade-transition origin="center" mode="out-in" :duration="250" v-else>
                 <router-view/>
             </fade-transition>
         </main>
@@ -18,6 +22,12 @@
             FadeTransition
         },
 
+        data() {
+            return {
+                busy: true,
+            };
+        },
+
         computed: {
             ...mapGetters({
                 user: 'user',
@@ -27,7 +37,9 @@
         mounted() {
             axios.get('/api/user')
                 .then(response => {
-                    this.setUser(response.data);
+                    this.setUser(response.data.data);
+
+                    this.busy = false;
                 })
                 .catch(error => {
                     console.log(error);
