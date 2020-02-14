@@ -15,6 +15,14 @@
                     <close-button @click="closeMenu"></close-button>
                 </div>
             </div>
+            <ul class="navbar-nav align-items-lg-center">
+                <!-- Artists -->
+                <router-link class="nav-link" role="button" :to="{ name: 'artists' }">
+                    <i class="ni ni-collection d-lg-none"></i>
+                    <span class="nav-link-inner--text">Artists</span>
+                </router-link>
+            </ul>
+
             <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                 <!-- Login -->
                 <li class="nav-item" v-if="! user">

@@ -2,9 +2,16 @@
 
 namespace App\Providers;
 
+use App\Models\Album;
+use App\Models\Artist;
+use App\Models\Member;
+use App\Models\Subunit;
+use App\Policies\AlbumPolicy;
+use App\Policies\ArtistPolicy;
+use App\Policies\MemberPolicy;
+use App\Policies\SubunitPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
-use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -14,7 +21,10 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+        Artist::class => ArtistPolicy::class,
+        Subunit::class => SubunitPolicy::class,
+        Member::class => MemberPolicy::class,
+        Album::class => AlbumPolicy::class,
     ];
 
     /**

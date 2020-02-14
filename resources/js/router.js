@@ -6,6 +6,7 @@ import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 import Profile from "./views/Profile.vue";
+import Artists from "./views/Artists.vue";
 
 Vue.use(Router);
 
@@ -48,7 +49,16 @@ export default new Router({
                 default: Profile,
                 footer: AppFooter
             }
-        }
+        },
+        {
+            path: "/artists",
+            name: "artists",
+            components: {
+                header: AppHeader,
+                default: Artists,
+                footer: AppFooter
+            }
+        },
     ],
     scrollBehavior: to => {
         if (to.hash) {
