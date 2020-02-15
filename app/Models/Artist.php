@@ -9,18 +9,16 @@ class Artist extends Model
     protected $fillable = [
         'name_en',
         'name_kr',
-        'name_romanized',
         'description',
         'twitter',
         'facebook',
         'youtube',
         'instagram',
-        'spotify',
         'daum',
-        'header_url',
-        'icon_url',
-        'logo_url',
         'spotify_id',
+        'spotify_image',
+        'image',
+        'logo',
     ];
 
     /**

@@ -13,7 +13,6 @@ $factory->define(Subunit::class, function (Faker $faker) {
         },
         'name_en' => $faker->name,
         'name_kr' => $faker->name,
-        'name_romanized' => $faker->name,
         'description' => $faker->sentence(),
         'twitter' => $faker->userName,
         'facebook' => $faker->userName,
@@ -21,8 +20,8 @@ $factory->define(Subunit::class, function (Faker $faker) {
         'instagram' => $faker->userName,
         'spotify_id' => $faker->userName,
         'daum' => $faker->userName,
-        'header_url' => null,
-        'icon_url' => null,
-        'logo_url' => null,
+        'image' => null,
+        'spotify_image' => null,
+        'logo' => null,
     ];
 });

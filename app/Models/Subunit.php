@@ -10,17 +10,16 @@ class Subunit extends Model
         'artist_id',
         'name_en',
         'name_kr',
-        'name_romanized',
         'description',
         'twitter',
         'facebook',
         'youtube',
         'instagram',
-        'spotify',
+        'spotify_id',
         'daum',
-        'header_url',
-        'icon_url',
-        'logo_url',
+        'image',
+        'spotify_image',
+        'logo',
     ];
 
     /**

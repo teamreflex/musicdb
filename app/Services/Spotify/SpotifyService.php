@@ -83,7 +83,7 @@ class SpotifyService implements SpotifyServiceContract
         $artistModel = Artist::create([
             'name_en' => $artist->name,
             'spotify_id' => $artist->id,
-            'icon_url' => $artist->images[0]->url ?? null,
+            'spotify_image' => $artist->images[0]->url ?? null,
         ]);
 
         if ($importAlbums) {
@@ -91,7 +91,7 @@ class SpotifyService implements SpotifyServiceContract
             collect($albums->items)->each(function ($album)  use ($artistModel) {
                 Album::create([
                     'name_en' => $album->name,
-                    'icon_url' => $album->images[0]->url,
+                    'spotify_image' => $album->images[0]->url,
                     'artist_id' => $artistModel->id,
                     'spotify_id' => $album->id,
                     'release_date' => $album->release_date,

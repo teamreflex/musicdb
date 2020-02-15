@@ -5,6 +5,7 @@
 use App\Models\Album;
 use App\Models\Artist;
 use App\Models\Subunit;
+use Carbon\Carbon;
 use Faker\Generator as Faker;
 
 $factory->define(Album::class, function (Faker $faker) {
@@ -17,11 +18,13 @@ $factory->define(Album::class, function (Faker $faker) {
         },
         'name_en' => $faker->name,
         'name_kr' => $faker->name,
-        'name_romanized' => $faker->name,
         'description' => $faker->sentence(),
         'spotify_id' => $faker->userName,
-        'header_url' => null,
-        'icon_url' => null,
-        'logo_url' => null,
+        'spotify_image' => null,
+        'cover_art' => null,
+        'album_image' => null,
+        'release_date' => Carbon::now(),
+        'version' => null,
+        'primary_version' => true,
     ];
 });

@@ -11,17 +11,13 @@ class Member extends Model
         'subunit_id',
         'name_en',
         'name_kr',
-        'name_romanized',
+        'stage_name_en',
+        'stage_name_kr',
         'description',
         'twitter',
-        'facebook',
         'youtube',
         'instagram',
-        'spotify',
-        'daum',
-        'header_url',
-        'icon_url',
-        'logo_url',
+        'image',
     ];
 
     /**

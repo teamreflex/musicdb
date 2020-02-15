@@ -9,7 +9,6 @@ $factory->define(Artist::class, function (Faker $faker) {
     return [
         'name_en' => $faker->name,
         'name_kr' => $faker->name,
-        'name_romanized' => $faker->name,
         'description' => $faker->sentence(),
         'twitter' => $faker->userName,
         'facebook' => $faker->userName,
@@ -17,8 +16,8 @@ $factory->define(Artist::class, function (Faker $faker) {
         'instagram' => $faker->userName,
         'spotify_id' => $faker->userName,
         'daum' => $faker->userName,
-        'header_url' => null,
-        'icon_url' => null,
-        'logo_url' => null,
+        'logo' => null,
+        'spotify_image' => null,
+        'image' => null,
     ];
 });

@@ -27,9 +27,14 @@ class MemberStoreRequest extends FormRequest
             'artist_id' => ['required', 'integer'],
             'subunit_id' => ['sometimes', 'integer'],
             'name_en' => ['required'],
-            'header_url' => ['required'],
-            'icon_url' => ['required'],
-            'logo_url' => ['required'],
+            'name_kr' => ['sometimes'],
+            'stage_name_en' => ['required'],
+            'stage_name_kr' => ['sometimes'],
+            'description' => ['sometimes'],
+            'twitter' => ['sometimes'],
+            'youtube' => ['sometimes'],
+            'instagram' => ['sometimes'],
+            'image' => ['sometimes'],
         ];
     }
 }

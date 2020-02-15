@@ -3,8 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\Artist;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Airlock\Airlock;
 use Tests\TestCase;
 
 class ArtistControllerTest extends TestCase
@@ -22,11 +24,10 @@ class ArtistControllerTest extends TestCase
 
     public function test_artist_can_be_created()
     {
+        Airlock::actingAs(factory(User::class)->create());
+
         $this->json('post', '/api/artist', [
             'name_en' => 'test',
-            'header_url' => 'test',
-            'icon_url' => 'test',
-            'logo_url' => 'test',
         ]);
 
         $this->assertDatabaseHas('artists', [
@@ -45,13 +46,12 @@ class ArtistControllerTest extends TestCase
 
     public function test_artist_can_be_updated()
     {
+        Airlock::actingAs(factory(User::class)->create());
+
         $artist = factory(Artist::class)->create();
 
         $this->json('put', '/api/artist/' . $artist->id, [
             'name_en' => 'test',
-            'header_url' => 'test',
-            'icon_url' => 'test',
-            'logo_url' => 'test',
         ]);
 
         $this->assertDatabaseHas('artists', [
@@ -61,6 +61,8 @@ class ArtistControllerTest extends TestCase
 
     public function test_artist_can_be_deleted()
     {
+        Airlock::actingAs(factory(User::class)->create());
+
         $artist = factory(Artist::class)->create();
 
         $this->json('delete', '/api/artist/' . $artist->id);

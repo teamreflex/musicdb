@@ -31,8 +31,6 @@ class CreateMembersTable extends Migration
             $table->string('facebook')->nullable();
             $table->string('youtube')->nullable();
             $table->string('instagram')->nullable();
-            $table->string('spotify')->nullable();
-            $table->string('daum')->nullable();
             $table->string('header_url')->nullable();
             $table->string('logo_url')->nullable();
             $table->string('icon_url')->nullable();

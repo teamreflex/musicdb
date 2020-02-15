@@ -4,8 +4,10 @@ namespace Tests\Feature;
 
 use App\Models\Artist;
 use App\Models\Subunit;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Airlock\Airlock;
 use Tests\TestCase;
 
 class SubunitControllerTest extends TestCase
@@ -23,14 +25,13 @@ class SubunitControllerTest extends TestCase
 
     public function test_subunit_can_be_created()
     {
+        Airlock::actingAs(factory(User::class)->create());
+
         $artist = factory(Artist::class)->create();
 
         $this->json('post', '/api/subunit', [
             'artist_id' => $artist->id,
             'name_en' => 'test',
-            'header_url' => 'test',
-            'icon_url' => 'test',
-            'logo_url' => 'test',
         ]);
 
         $this->assertDatabaseHas('subunits', [
@@ -49,14 +50,13 @@ class SubunitControllerTest extends TestCase
 
     public function test_subunit_can_be_updated()
     {
+        Airlock::actingAs(factory(User::class)->create());
+
         $subunit = factory(Subunit::class)->create();
 
         $this->json('put', '/api/subunit/' . $subunit->id, [
             'artist_id' => $subunit->artist_id,
             'name_en' => 'test',
-            'header_url' => 'test',
-            'icon_url' => 'test',
-            'logo_url' => 'test',
         ]);
 
         $this->assertDatabaseHas('subunits', [
@@ -66,6 +66,8 @@ class SubunitControllerTest extends TestCase
 
     public function test_subunit_can_be_deleted()
     {
+        Airlock::actingAs(factory(User::class)->create());
+
         $subunit = factory(Subunit::class)->create();
 
         $this->json('delete', '/api/subunit/' . $subunit->id);

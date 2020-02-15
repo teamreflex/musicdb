@@ -4,8 +4,10 @@ namespace Tests\Feature;
 
 use App\Models\Artist;
 use App\Models\Album;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Airlock\Airlock;
 use Tests\TestCase;
 
 class AlbumControllerTest extends TestCase
@@ -23,14 +25,13 @@ class AlbumControllerTest extends TestCase
 
     public function test_album_can_be_created()
     {
+        Airlock::actingAs(factory(User::class)->create());
+
         $artist = factory(Artist::class)->create();
 
         $this->json('post', '/api/album', [
             'artist_id' => $artist->id,
             'name_en' => 'test',
-            'header_url' => 'test',
-            'icon_url' => 'test',
-            'logo_url' => 'test',
         ]);
 
         $this->assertDatabaseHas('albums', [
@@ -49,14 +50,13 @@ class AlbumControllerTest extends TestCase
 
     public function test_album_can_be_updated()
     {
+        Airlock::actingAs(factory(User::class)->create());
+
         $album = factory(Album::class)->create();
 
         $this->json('put', '/api/album/' . $album->id, [
             'artist_id' => $album->artist_id,
             'name_en' => 'test',
-            'header_url' => 'test',
-            'icon_url' => 'test',
-            'logo_url' => 'test',
         ]);
 
         $this->assertDatabaseHas('albums', [
@@ -66,6 +66,8 @@ class AlbumControllerTest extends TestCase
 
     public function test_album_can_be_deleted()
     {
+        Airlock::actingAs(factory(User::class)->create());
+
         $album = factory(Album::class)->create();
 
         $this->json('delete', '/api/album/' . $album->id);

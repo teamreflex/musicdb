@@ -27,9 +27,15 @@ class AlbumUpdateRequest extends FormRequest
             'artist_id' => ['required', 'integer'],
             'subunit_id' => ['sometimes', 'integer'],
             'name_en' => ['required'],
-            'header_url' => ['required'],
-            'icon_url' => ['required'],
-            'logo_url' => ['required'],
+            'name_kr' => ['sometimes'],
+            'description' => ['sometimes'],
+            'spotify_id' => ['sometimes'],
+            'spotify_image' => ['sometimes'],
+            'cover_art' => ['sometimes'],
+            'album_image' => ['sometimes'],
+            'release_date' => ['sometimes'],
+            'version' => ['sometimes'],
+            'primary_version' => ['sometimes'],
         ];
     }
 }

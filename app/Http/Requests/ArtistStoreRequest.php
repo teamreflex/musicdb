@@ -25,9 +25,17 @@ class ArtistStoreRequest extends FormRequest
     {
         return [
             'name_en' => ['required'],
-            'header_url' => ['required'],
-            'icon_url' => ['required'],
-            'logo_url' => ['required'],
+            'name_kr' => ['sometimes'],
+            'description' => ['sometimes'],
+            'twitter' => ['sometimes'],
+            'facebook' => ['sometimes'],
+            'youtube' => ['sometimes'],
+            'instagram' => ['sometimes'],
+            'daum' => ['sometimes'],
+            'spotify_id' => ['sometimes'],
+            'spotify_image' => ['sometimes'],
+            'image' => ['sometimes'],
+            'logo' => ['sometimes'],
         ];
     }
 }

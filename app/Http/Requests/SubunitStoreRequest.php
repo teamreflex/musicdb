@@ -26,9 +26,17 @@ class SubunitStoreRequest extends FormRequest
         return [
             'artist_id' => ['required', 'integer'],
             'name_en' => ['required'],
-            'header_url' => ['required'],
-            'icon_url' => ['required'],
-            'logo_url' => ['required'],
+            'name_kr' => ['sometimes'],
+            'description' => ['sometimes'],
+            'twitter' => ['sometimes'],
+            'facebook' => ['sometimes'],
+            'youtube' => ['sometimes'],
+            'instagram' => ['sometimes'],
+            'spotify_id' => ['sometimes'],
+            'daum' => ['sometimes'],
+            'image' => ['sometimes'],
+            'spotify_image' => ['sometimes'],
+            'logo' => ['sometimes'],
         ];
     }
 }

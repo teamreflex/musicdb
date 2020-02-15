@@ -2,7 +2,7 @@
     <div class="card mb-3">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img v-lazy="album.icon_url" :alt="album.name_en"
+                <img v-lazy="album.cover_art || album.spotify_image" :alt="album.name_en"
                      class="card-img img-fluid" />
             </div>
             <div class="col-md-8">
