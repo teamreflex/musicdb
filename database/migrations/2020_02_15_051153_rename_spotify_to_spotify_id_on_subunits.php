@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSpotifyIdToArtists extends Migration
+class RenameSpotifyToSpotifyIdOnSubunits extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddSpotifyIdToArtists extends Migration
      */
     public function up()
     {
-        Schema::table('artists', function (Blueprint $table) {
+        Schema::table('subunits', function (Blueprint $table) {
             $table->renameColumn('spotify', 'spotify_id');
         });
     }
@@ -25,7 +25,7 @@ class AddSpotifyIdToArtists extends Migration
      */
     public function down()
     {
-        Schema::table('artists', function (Blueprint $table) {
+        Schema::table('subunits', function (Blueprint $table) {
             $table->renameColumn('spotify_id', 'spotify');
         });
     }

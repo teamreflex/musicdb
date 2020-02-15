@@ -1,38 +1,39 @@
 <template>
-    <section class="section-hero section-shaped my-0">
-        <div class="shape shape-style-1 shape-primary">
-            <span class="span-150"></span>
-            <span class="span-50"></span>
-            <span class="span-50"></span>
-            <span class="span-75"></span>
-            <span class="span-100"></span>
-            <span class="span-75"></span>
-            <span class="span-50"></span>
-            <span class="span-100"></span>
-            <span class="span-50"></span>
-            <span class="span-100"></span>
-        </div>
-
-        <div class="container shape-container d-flex">
-            <div class="col px-0">
-                <div class="row" v-for="artist in artists" :key="'artist-' + artist.id">
-                    <div class="col-2">
-                        <img v-lazy="artist.icon_url" :alt="artist.name_en"
-                             class="img-fluid rounded-circle shadow-lg" style="width: 150px;">
-                    </div>
-
-                    <div class="col-10">
-                        <h3 class="text-white">{{ artist.name_en }}</h3>
-                        <p class="text-white" v-if="artist.name_kr"> {{ artist.name_kr }}</p>
+    <div>
+        <div class="position-relative">
+            <!-- shape Hero -->
+            <section class="section-shaped my-0">
+                <div class="shape shape-style-1 shape-primary shape-skew">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="container shape-container d-flex">
+                    <div class="col px-0">
+                        <div v-for="artist in artists" :key="'artist-' + artist.id">
+                            <ArtistCard :artist="artist" />
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
-    </section>
+    </div>
 </template>
 <script>
+    import ArtistCard from "./components/ArtistCard";
+
     export default {
         name: "artists",
+
+        components: {
+            ArtistCard,
+        },
 
         data() {
             return {

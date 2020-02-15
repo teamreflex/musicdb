@@ -43,6 +43,8 @@
                 })
                 .catch(error => {
                     console.log(error);
+
+                    this.busy = false;
                 });
         },
 

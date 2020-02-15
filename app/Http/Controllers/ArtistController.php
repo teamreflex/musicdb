@@ -54,7 +54,7 @@ class ArtistController extends Controller
         $this->authorize('view', $artist);
 
         return $this->response->json([
-            'data' => $artist,
+            'data' => $artist->load(['albums', 'subunits', 'members']),
         ]);
     }
 

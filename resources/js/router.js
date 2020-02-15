@@ -8,6 +8,7 @@ import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 import Profile from "./views/Profile.vue";
 import Artists from "./views/Artists.vue";
+import Artist from "./views/Artist.vue";
 
 Vue.use(Router);
 
@@ -66,6 +67,15 @@ export default new Router({
             components: {
                 header: AppHeader,
                 default: Artists,
+                footer: AppFooter
+            }
+        },
+        {
+            path: "/artist/:artistId",
+            name: "artist",
+            components: {
+                header: AppHeader,
+                default: Artist,
                 footer: AppFooter
             }
         },
