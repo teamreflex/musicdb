@@ -60,7 +60,7 @@
                             </h3>
                             <div class="h6 font-weight-300"><fa-icon icon="map-marker-alt" /> Auckland, New Zealand</div>
                         </div>
-                        <div class="mt-5 py-5 border-top text-center">
+                        <div class="mt-5 py-5 border-top">
                             <div class="row justify-content-center">
                                 <div class="col-lg-9">
                                     <tabs fill class="flex-column flex-md-row">

@@ -1,6 +1,9 @@
 <template>
     <div>
-        <base-button type="danger" @click="modal = true">Remove</base-button>
+        <base-button size="sm" type="danger" @click="modal = true">
+            <fa-icon icon="times" />
+            Remove
+        </base-button>
 
         <modal :show.sync="modal"
                gradient="danger"

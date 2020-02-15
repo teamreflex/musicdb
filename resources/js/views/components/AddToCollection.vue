@@ -1,6 +1,9 @@
 <template>
     <div>
-        <base-button type="success" @click="modal = true">Add To Collection</base-button>
+        <base-button size="sm" type="info" @click="modal = true">
+            <fa-icon icon="plus" />
+            Add To Collection
+        </base-button>
 
         <modal :show.sync="modal"
                body-classes="p-0"

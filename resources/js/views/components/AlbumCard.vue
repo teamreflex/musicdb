@@ -6,24 +6,61 @@
                      class="card-img img-fluid" />
             </div>
             <div class="col-md-8">
-                <div class="card-body">
+                <div class="card-body justify-content-left">
                     <h5 class="card-title">{{ album.name_en }} <span v-if="album.name_kr">({{ album.name_kr }})</span></h5>
-                    <p class="card-text text-muted" v-if="album.versions && album.versions.length > 1">Versions: {{ stringVersions }}</p>
-                    <p class="card-text text-muted" v-if="owned && album.version">{{ album.version }}</p>
 
-                    <div v-if="acquired">
-                        <p class="card-text text-muted">Acquired: {{ acquiredAt }}</p>
-                        <p class="card-text text-muted">
-                            Promo: <fa-icon :icon="promo ? 'check' : 'times'" />
-                            Signed: <fa-icon :icon="signed ? 'check' : 'times'" />
-                        </p>
-                    </div>
-                    <p class="card-text text-muted" v-else>Release: {{ release }}</p>
+                    <p class="cart-text text-muted">
+                        <!-- Acquired at -->
+                        <badge v-if="acquired"
+                               type="primary" >
+                            <fa-icon icon="shopping-cart" /> {{ acquiredAt }}
+                        </badge>
 
-                    <p class="card-text text-muted" v-if="album.spotify_id">
-                        <a :href="'https://open.spotify.com/album/' + album.spotify_id" target="_blank"><fa-icon :icon="['fab', 'spotify']" /> View on Spotify</a>
+                        <!-- Release date -->
+                        <badge v-else
+                               type="primary" >
+                            <fa-icon icon="calendar" /> {{ release }}
+                        </badge>
+
+                        <!-- Promo album? -->
+                        <badge v-if="owned && album.version && promo"
+                               type="warning"
+                               v-b-tooltip.hover.top
+                               title="Promotional album, given out to radio stations, directors etc.">
+                            <fa-icon icon="star" />
+                        </badge>
+
+                        <!-- Signed album? -->
+                        <badge v-if="owned && album.version && signed"
+                               type="success"
+                               v-b-tooltip.hover.top
+                               title="Album is signed by the artist.">
+                            <fa-icon icon="signature" />
+                        </badge>
+
+                        <!-- Album version -->
+                        <badge v-if="owned && album.version"
+                               type="secondary">
+                            {{ album.version }}
+                        </badge>
                     </p>
-                    <p class="card-text">
+
+                    <p class="card-text text-muted" v-if="album.versions && album.versions.length > 1">
+                        <badge v-for="version in album.versions"
+                               :key="'version-' + version.id"
+                               type="secondary">
+                            {{ version.version || version.name_en }}
+                        </badge>
+                    </p>
+
+                    <p class="card-text d-flex">
+                        <a :href="'https://open.spotify.com/album/' + album.spotify_id"
+                           target="_blank"
+                           class="btn btn-success btn-sm"
+                           v-if="album.spotify_id">
+                            <fa-icon :icon="['fab', 'spotify']" /> View on Spotify
+                        </a>
+
                         <AddToCollection v-if="showAdd"
                                          :id="album.id"
                                          type="album"

@@ -2,24 +2,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import {
-    faSpinner,
-    faCompactDisc,
-    faSignInAlt,
-    faSignOutAlt,
-    faUserPlus,
-    faUser,
-    faUsers,
-    faPortrait,
-    faCoffee,
-    faHeart,
-    faMapMarkerAlt,
-    faMusic,
-    faCheck,
-    faTimes,
-    faPlus,
-} from '@fortawesome/free-solid-svg-icons';
-
-import {
     faTwitter,
     faFacebook,
     faInstagram,
@@ -27,7 +9,7 @@ import {
     faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 
-library.add(
+import {
     faSpinner,
     faCompactDisc,
     faSignInAlt,
@@ -43,11 +25,37 @@ library.add(
     faCheck,
     faTimes,
     faPlus,
+    faSignature,
+    faStar,
+    faShoppingCart,
+    faCalendar,
+} from '@fortawesome/free-solid-svg-icons';
+
+library.add(
     faTwitter,
     faFacebook,
     faInstagram,
     faSpotify,
     faYoutube,
+    faSpinner,
+    faCompactDisc,
+    faSignInAlt,
+    faSignOutAlt,
+    faUserPlus,
+    faUser,
+    faUsers,
+    faPortrait,
+    faCoffee,
+    faHeart,
+    faMapMarkerAlt,
+    faMusic,
+    faCheck,
+    faTimes,
+    faPlus,
+    faSignature,
+    faStar,
+    faShoppingCart,
+    faCalendar,
 );
 
 export default FontAwesomeIcon;
