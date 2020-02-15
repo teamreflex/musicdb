@@ -71,6 +71,10 @@
                                                     Albums
                                                 </span>
 
+                                                <p class="description" v-if="albums.length === 0">
+                                                    0 albums found.
+                                                </p>
+
                                                 <AlbumCard v-for="collectable in albums"
                                                            :key="'album-' + collectable.id"
                                                            :album="collectable.collectable"
@@ -85,7 +89,9 @@
                                                     Photocards
                                                 </span>
 
-                                                <p class="description">TBD</p>
+                                                <p class="description" v-if="photocards.length === 0">
+                                                    0 photocards found.
+                                                </p>
                                             </tab-pane>
 
                                             <tab-pane title="Other">
@@ -93,6 +99,7 @@
                                                     <i class="fa fa-user" />
                                                     Other
                                                   </span>
+
                                                 <p class="description">TBD</p>
                                             </tab-pane>
                                         </card>
