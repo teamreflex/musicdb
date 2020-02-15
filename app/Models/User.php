@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * This user's collection of owned items.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function collection()
+    {
+        return $this->hasMany(OwnedItem::class);
+    }
 }

@@ -2,14 +2,14 @@
     <header class="header-global">
         <base-nav class="navbar-main" transparent type="" effect="light" expand>
             <router-link slot="brand" class="navbar-brand mr-lg-5" :to="{ name: user ? 'home' : 'index' }">
-                <img src="img/brand/white.png" alt="logo">
+                <img src="/img/brand/white.png" alt="logo">
             </router-link>
 
             <div class="row" slot="content-header" slot-scope="{closeMenu}">
                 <div class="col-6 collapse-brand">
-                    <a href="https://demos.creative-tim.com/vue-argon-design-system/documentation/">
-                        <img src="img/brand/blue.png">
-                    </a>
+                    <router-link :to="{ name: user ? 'home' : 'index' }">
+                        <img src="/img/brand/blue.png">
+                    </router-link>
                 </div>
                 <div class="col-6 collapse-close">
                     <close-button @click="closeMenu"></close-button>
@@ -50,7 +50,7 @@
 
                 <!-- Profile -->
                 <li class="nav-item" v-if="user">
-                    <router-link class="nav-link nav-link-icon" :to="{ name: 'profile' }">
+                    <router-link class="nav-link nav-link-icon" :to="{ name: 'profile', params: {username: user.username} }">
                         {{ user.username }}
                         <span class="nav-link-inner--text d-lg-none">Profile</span>
                     </router-link>

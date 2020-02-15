@@ -53,7 +53,7 @@ export default new Router({
             }
         },
         {
-            path: "/profile",
+            path: "/profile/:username",
             name: "profile",
             components: {
                 header: AppHeader,
