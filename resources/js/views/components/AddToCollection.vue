@@ -38,15 +38,28 @@
                             Promo?
                         </base-checkbox>
 
+                        <div v-if="versions.length">
+                            <div class="text-muted text-center mb-3">
+                                <small>Select version</small>
+                            </div>
+
+                            <base-radio v-for="album in versions" :key="'version-' + album.id"
+                                        :name="album.id.toString()"
+                                        :value="album.id"
+                                        v-model="form.collectable_id">
+                                {{ album.version }}
+                            </base-radio>
+                        </div>
+
                         <div class="text-center">
                             <base-button type="primary" class="my-4" @click="add" :disabled="busy">
-                            <span v-if="busy">
-                                <i class="fa fa-spin fa-spinner" />
-                            </span>
+                                <span v-if="busy">
+                                    <fa-icon icon="spinner" spin />
+                                </span>
 
                                 <span v-else>
-                                <fa-icon icon="plus" /> Add
-                            </span>
+                                    <fa-icon icon="plus" /> Add
+                                </span>
                             </base-button>
                         </div>
                     </form>
@@ -62,7 +75,7 @@
     import "flatpickr/dist/flatpickr.css";
 
     export default {
-        props: ['id', 'type', 'name', 'signed', 'promo'],
+        props: ['id', 'type', 'name', 'signed', 'promo', 'versions'],
 
         components: {
             Modal,
@@ -79,6 +92,7 @@
                     acquired_at: null,
                     is_signed: false,
                     is_promo: false,
+                    collectable_id: this.id.toString(),
                 },
             };
         },

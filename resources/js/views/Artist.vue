@@ -104,7 +104,17 @@
             }),
 
             albums() {
-                return _.orderBy(this.artist.albums, ['release_date'], ['desc']);
+                return _.chain(this.artist.albums)
+                    .filter(album => album.primary_version)
+                    .map(album => {
+                        let versions = _.filter(this.artist.albums, {spotify_id: album.spotify_id});
+                        if (versions) {
+                            album.versions = versions;
+                        }
+                        return album;
+                    })
+                    .orderBy(['release_date'], ['desc'])
+                    .value();
             },
         },
 

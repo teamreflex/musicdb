@@ -19,6 +19,7 @@ class Album extends Model
         'logo_url',
         'release_date',
         'version',
+        'primary_version',
     ];
 
     protected $dates = [
