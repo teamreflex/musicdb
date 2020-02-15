@@ -52,4 +52,14 @@ class Artist extends Model
     {
         return $this->hasMany(Album::class);
     }
+
+    /**
+     * Photocards for this artist.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function photocards()
+    {
+        return $this->hasMany(Photocard::class);
+    }
 }

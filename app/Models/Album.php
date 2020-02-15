@@ -43,4 +43,14 @@ class Album extends Model
     {
         return $this->belongsTo(Subunit::class);
     }
+
+    /**
+     * Photocards in this album.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function photocards()
+    {
+        return $this->hasMany(Photocard::class);
+    }
 }
