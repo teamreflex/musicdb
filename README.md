@@ -1,4 +1,4 @@
-![Tests](https://github.com/teamreflex/musicdb/workflows/Testing%20Laravel/badge.svg)
+![phpunit](https://github.com/teamreflex/musicdb/workflows/phpunit/badge.svg)
 
 ## Requirements
 - PHP 7.4
