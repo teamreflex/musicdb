@@ -50,6 +50,10 @@
                                                     Subunits
                                                 </span>
 
+                                                <p class="description text-center" v-if="artist.subunits.length === 0">
+                                                    {{ artist.name_en }} has no subunits.
+                                                </p>
+
                                                 <SubunitCard v-for="subunit in artist.subunits" :key="'subunit-' + subunit.id" :subunit="subunit" />
                                             </tab-pane>
 
@@ -58,10 +62,8 @@
                                                     <fa-icon icon="user" />
                                                     Members
                                                   </span>
-                                                <p class="description">Raw denim you probably haven't heard of them jean shorts
-                                                    Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache
-                                                    cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro
-                                                    keffiyeh dreamcatcher synth.</p>
+
+                                                <p class="description">Coming soon.</p>
                                             </tab-pane>
                                         </card>
                                     </tabs>

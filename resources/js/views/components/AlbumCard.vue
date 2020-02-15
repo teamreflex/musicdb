@@ -8,7 +8,7 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">{{ album.name_en }} <span v-if="album.name_kr">({{ album.name_kr }})</span></h5>
-                    <p class="card-text text-muted" v-if="album.versions">Versions: {{ stringVersions }}</p>
+                    <p class="card-text text-muted" v-if="album.versions && album.versions.length > 1">Versions: {{ stringVersions }}</p>
                     <p class="card-text text-muted" v-if="owned && album.version">{{ album.version }}</p>
 
                     <div v-if="acquired">

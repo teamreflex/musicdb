@@ -38,7 +38,7 @@
                             Promo?
                         </base-checkbox>
 
-                        <div v-if="versions.length">
+                        <div v-if="versions.length && versions.length > 1">
                             <div class="text-muted text-center mb-3">
                                 <small>Select version</small>
                             </div>
