@@ -14,34 +14,34 @@
                 <div class="card-footer">
                     <div class="pull-left">
                         <span v-if="artist.twitter">
-                            <a :href="'https://twitter.com/' + artist.twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a :href="'https://twitter.com/' + artist.twitter" target="_blank"><fa-icon :icon="['fab', 'twitter']" /></a>
                         </span>
 
                         <span v-if="artist.facebook">
-                            <a :href="'https://facebook.com/' + artist.facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a :href="'https://facebook.com/' + artist.facebook" target="_blank"><fa-icon :icon="['fab', 'facebook']" /></a>
                         </span>
 
                         <span v-if="artist.instagram">
-                            <a :href="'https://instagram.com/' + artist.instagram" target="_blank"><i class="fa fa-instagram"></i></a>
+                            <a :href="'https://instagram.com/' + artist.instagram" target="_blank"><fa-icon :icon="['fab', 'instagram']" /></a>
                         </span>
 
                         <span v-if="artist.youtube">
-                            <a :href="'https://youtube.com/c/' + artist.youtube" target="_blank"><i class="fa fa-youtube"></i></a>
+                            <a :href="'https://youtube.com/c/' + artist.youtube" target="_blank"><fa-icon :icon="['fab', 'youtube']" /></a>
                         </span>
 
                         <span v-if="artist.spotify_id">
-                            <a :href="'https://open.spotify.com/artist/' + artist.spotify_id" target="_blank"><i class="fa fa-spotify"></i></a>
+                            <a :href="'https://open.spotify.com/artist/' + artist.spotify_id" target="_blank"><fa-icon :icon="['fab', 'spotify']" /></a>
                         </span>
 
                         <span v-if="artist.daum">
-                            <a :href="'http://cafe.daum.net/' + artist.daum" target="_blank"><i class="fa fa-coffee"></i></a>
+                            <a :href="'http://cafe.daum.net/' + artist.daum" target="_blank"><fa-icon icon="coffee" /></a>
                         </span>
                     </div>
 
                     <div class="pull-right">
                         <router-link :to="{ name: 'artist', params: {artistId: artist.id} }"
                                      class="btn btn-info btn-sm mb-3 mb-sm-0">
-                            <i class="fa fa-music" /> View
+                            <fa-icon icon="music" /> View
                         </router-link>
                     </div>
                 </div>

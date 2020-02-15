@@ -12,14 +12,14 @@
                     <div v-if="acquired">
                         <p class="card-text text-muted">Acquired: {{ acquiredAt }}</p>
                         <p class="card-text text-muted">
-                            Promo: <i class="fa" :class="{'fa-check': promo, 'fa-times': ! promo}" />
-                            Signed: <i class="fa" :class="{'fa-check': signed, 'fa-times': ! signed}" />
+                            Promo: <fa-icon :icon="promo ? 'check' : 'times'" />
+                            Signed: <fa-icon :icon="signed ? 'check' : 'times'" />
                         </p>
                     </div>
                     <p class="card-text text-muted" v-else>Release: {{ release }}</p>
 
                     <p class="card-text text-muted" v-if="album.spotify_id">
-                        <a :href="'https://open.spotify.com/album/' + album.spotify_id" target="_blank"><i class="fa fa-spotify"></i> View on Spotify</a>
+                        <a :href="'https://open.spotify.com/album/' + album.spotify_id" target="_blank"><fa-icon :icon="['fab', 'spotify']" /> View on Spotify</a>
                     </p>
                     <p class="card-text">
                         <AddToCollection v-if="showAdd"

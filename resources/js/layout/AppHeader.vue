@@ -27,7 +27,7 @@
                 <!-- Login -->
                 <li class="nav-item" v-if="! user">
                     <router-link class="nav-link nav-link-icon" :to="{ name: 'login' }">
-                        <i class="fa fa-sign-in"></i>
+                        <fa-icon icon="sign-in-alt" />
                         <span class="nav-link-inner--text d-lg-none">Login</span>
                     </router-link>
                 </li>
@@ -35,7 +35,7 @@
                 <!-- Register -->
                 <li class="nav-item" v-if="! user">
                     <router-link class="nav-link nav-link-icon" :to="{ name: 'register' }">
-                        <i class="fa fa-user-plus"></i>
+                        <fa-icon icon="user-plus" />
                         <span class="nav-link-inner--text d-lg-none">Register</span>
                     </router-link>
                 </li>
@@ -43,7 +43,7 @@
                 <!-- Logout -->
                 <li class="nav-item" v-if="user">
                     <span class="nav-link nav-link-icon" @click="logout">
-                        <i class="fa fa-sign-out"></i>
+                        <fa-icon icon="sign-out-alt" />
                         <span class="nav-link-inner--text d-lg-none">Logout</span>
                     </span>
                 </li>

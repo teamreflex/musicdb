@@ -33,7 +33,7 @@
                                         <card shadow>
                                             <tab-pane title="Albums">
                                                 <span slot="title">
-                                                    <i class="fa fa-music" />
+                                                    <fa-icon icon="compact-disc" />
                                                     Albums
                                                 </span>
 
@@ -46,7 +46,7 @@
 
                                             <tab-pane title="Subunits">
                                                 <span slot="title">
-                                                    <i class="fa fa-users" />
+                                                    <fa-icon icon="users" />
                                                     Subunits
                                                 </span>
 
@@ -55,7 +55,7 @@
 
                                             <tab-pane title="Members">
                                                  <span slot="title">
-                                                    <i class="fa fa-user" />
+                                                    <fa-icon icon="user" />
                                                     Members
                                                   </span>
                                                 <p class="description">Raw denim you probably haven't heard of them jean shorts

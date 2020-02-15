@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ subunit.name_en }} <span v-if="subunit.name_kr">({{ subunit.name_kr }})</span></h5>
                     <p class="card-text text-muted" v-if="subunit.spotify_id">
-                        <a :href="'https://open.spotify.com/artist/' + subunit.spotify_id" target="_blank"><i class="fa fa-spotify"></i> View on Spotify</a>
+                        <a :href="'https://open.spotify.com/artist/' + subunit.spotify_id" target="_blank"><fa-icon :icon="['fab', 'spotify']" /> View on Spotify</a>
                     </p>
                 </div>
             </div>

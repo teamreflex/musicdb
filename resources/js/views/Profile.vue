@@ -30,11 +30,11 @@
                             <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                                 <div class="card-profile-actions py-4 mt-lg-0">
                                     <router-link class="btn btn-default btn-sm mr-4" :to="{ name: 'artist', params: {artistId: 7} }">
-                                        <i class="fa fa-heart" /> LOONA
+                                        <fa-icon icon="heart" /> LOONA
                                     </router-link>
 
                                     <router-link class="btn btn-danger btn-sm mr-4" :to="{ name: 'artist', params: {artistId: 7} }">
-                                        <i class="fa fa-heart" /> Kim Lip
+                                        <fa-icon icon="heart" /> Kim Lip
                                     </router-link>
                                 </div>
                             </div>
@@ -58,7 +58,7 @@
                         <div class="text-center mt-5">
                             <h3>{{ user.username }}
                             </h3>
-                            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Auckland, New Zealand</div>
+                            <div class="h6 font-weight-300"><fa-icon icon="map-marker-alt" />Auckland, New Zealand</div>
                         </div>
                         <div class="mt-5 py-5 border-top text-center">
                             <div class="row justify-content-center">
@@ -67,7 +67,7 @@
                                         <card shadow>
                                             <tab-pane title="Albums">
                                                 <span slot="title">
-                                                    <i class="fa fa-music" />
+                                                    <fa-icon icon="compact-disc" />
                                                     Albums
                                                 </span>
 
@@ -81,7 +81,7 @@
 
                                             <tab-pane title="Photocards">
                                                 <span slot="title">
-                                                    <i class="fa fa-portrait" />
+                                                    <fa-icon icon="portrait" />
                                                     Photocards
                                                 </span>
 

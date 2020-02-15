@@ -45,7 +45,7 @@
                             </span>
 
                                 <span v-else>
-                                <i class="fa fa-plus" /> Add
+                                <fa-icon icon="plus" /> Add
                             </span>
                             </base-button>
                         </div>

@@ -25,11 +25,11 @@
                                 <div class="btn-wrapper">
                                     <router-link :to="{ name: 'artists' }"
                                                  class="btn btn-info mb-3 mb-sm-0">
-                                        <i class="fa fa-music" /> View Artists
+                                        <fa-icon icon="music" /> View Artists
                                     </router-link>
                                     <router-link :to="{ name: 'register' }"
                                                  class="btn btn-neutral mb-3 mb-sm-0">
-                                        <i class="fa fa-sign-in" /> Sign up
+                                        <fa-icon icon="sign-in-alt" /> Sign up
                                     </router-link>
                                 </div>
                             </div>
