@@ -47,7 +47,7 @@
                                         :name="album.id.toString()"
                                         :value="album.id"
                                         v-model="form.collectable_id">
-                                {{ album.version }}
+                                {{ album.version || album.name_en }}
                             </base-radio>
                         </div>
 
