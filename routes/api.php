@@ -11,4 +11,5 @@ Route::apiResources([
     'member' => 'MemberController',
     'subunit' => 'SubunitController',
     'album' => 'AlbumController',
+    'photocard' => 'PhotocardController',
 ]);
