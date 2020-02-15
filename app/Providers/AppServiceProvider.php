@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Models\Album;
 use App\Models\Photocard;
+use App\Services\Collection\CollectionService;
+use App\Services\Collection\CollectionServiceContract;
 use App\Services\Spotify\SpotifyService;
 use App\Services\Spotify\SpotifyServiceContract;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -24,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
         ];
 
         $this->app->singleton(SpotifyServiceContract::class, SpotifyService::class);
+        $this->app->bind(CollectionServiceContract::class, CollectionService::class);
     }
 
     /**

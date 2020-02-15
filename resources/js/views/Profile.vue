@@ -74,9 +74,9 @@
                                                 <AlbumCard v-for="collectable in albums"
                                                            :key="'album-' + collectable.id"
                                                            :album="collectable.collectable"
-                                                           :signed="collectable.is_signed"
-                                                           :promo="collectable.is_promo"
-                                                           :acquired="collectable.acquired_at"/>
+                                                           :owned="collectable"
+                                                           :show-add="!! currentUser && currentUser.id !== user.id"
+                                                           :show-remove="!! currentUser && currentUser.id === user.id"/>
                                             </tab-pane>
 
                                             <tab-pane title="Photocards">
@@ -111,6 +111,7 @@
     import Tabs from "../components/Tabs/Tabs";
     import TabPane from "../components/Tabs/TabPane";
     import AlbumCard from "./components/AlbumCard";
+    import {mapGetters} from "vuex";
 
     export default {
         components: {
@@ -122,29 +123,39 @@
         data() {
             return {
                 user: null,
+                collection: [],
 
                 busy: true,
             };
         },
 
         computed: {
+            ...mapGetters({
+                currentUser: 'user',
+            }),
+
             albums() {
-                return _.filter(this.user.collection, c => c.collectable_type === 'album')
+                return _.filter(this.collection, c => c.collectable_type === 'album')
             },
 
             photocards() {
-                return _.filter(this.user.collection, c => c.collectable_type === 'photocard')
+                return _.filter(this.collection, c => c.collectable_type === 'photocard')
             },
 
             other() {
-                return _.filter(this.user.collection, c => ! ['album', 'photocard'].includes(c.collectable_type))
+                return _.filter(this.collection, c => ! ['album', 'photocard'].includes(c.collectable_type))
             },
         },
 
         mounted() {
+            this.$bus.$on('collection-remove', id => {
+                this.collection.splice(_.findIndex(this.collection, this.collection), 1);
+            });
+
             axios.get('/api/user/' + this.$route.params.username)
                 .then(response => {
                     this.user = response.data.data;
+                    this.collection = this.user.collection;
 
                     this.busy = false;
                 })

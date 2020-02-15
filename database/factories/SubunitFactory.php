@@ -19,7 +19,7 @@ $factory->define(Subunit::class, function (Faker $faker) {
         'facebook' => $faker->userName,
         'youtube' => $faker->userName,
         'instagram' => $faker->userName,
-        'spotify' => $faker->userName,
+        'spotify_id' => $faker->userName,
         'daum' => $faker->userName,
         'header_url' => null,
         'icon_url' => null,

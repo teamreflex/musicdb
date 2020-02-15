@@ -22,11 +22,14 @@
                         <a :href="'https://open.spotify.com/album/' + album.spotify_id" target="_blank"><i class="fa fa-spotify"></i> View on Spotify</a>
                     </p>
                     <p class="card-text">
-                        <AddToCollection :id="album.id"
+                        <AddToCollection v-if="showAdd"
+                                         :id="album.id"
                                          type="album"
                                          :name="album.name_en"
                                          :signed="true"
                                          :promo="true" />
+                        <RemoveFromCollection v-if="showRemove"
+                                              :item="owned" />
                     </p>
                 </div>
             </div>
@@ -37,12 +40,14 @@
 <script>
     import moment from "moment";
     import AddToCollection from "./AddToCollection";
+    import RemoveFromCollection from "./RemoveFromCollection";
 
     export default {
-        props: ['album', 'signed', 'promo', 'acquired'],
+        props: ['album', 'owned', 'showAdd', 'showRemove'],
 
         components: {
             AddToCollection,
+            RemoveFromCollection,
         },
 
         computed: {
@@ -50,8 +55,20 @@
                 return moment(this.album.release_date).format('Do MMMM YYYY');
             },
 
+            signed() {
+                return this.owned && this.owned.is_signed;
+            },
+
+            promo() {
+                return this.owned && this.owned.is_promo;
+            },
+
+            acquired() {
+                return this.owned && !! this.owned.acquired_at;
+            },
+
             acquiredAt() {
-                return this.acquired ? moment(this.acquired).format('Do MMMM YYYY') : null;
+                return this.acquired ? moment(this.owned.acquired_at).format('Do MMMM YYYY') : null;
             },
         },
     }

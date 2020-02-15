@@ -9,6 +9,8 @@ import router from "./router";
 Vue.config.productionTip = false;
 Vue.use(Argon);
 
+Vue.prototype.$bus = new Vue();
+
 new Vue({
     router,
     store,

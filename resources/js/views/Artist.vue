@@ -37,7 +37,11 @@
                                                     Albums
                                                 </span>
 
-                                                <AlbumCard v-for="album in albums" :key="'album-' + album.id" :album="album" />
+                                                <AlbumCard v-for="album in albums"
+                                                           :key="'album-' + album.id"
+                                                           :album="album"
+                                                           :show-add="!! user"
+                                                           :show-remove="false"/>
                                             </tab-pane>
 
                                             <tab-pane title="Subunits">
@@ -75,6 +79,7 @@
     import TabPane from "../components/Tabs/TabPane";
     import AlbumCard from "./components/AlbumCard";
     import SubunitCard from "./components/SubunitCard";
+    import {mapGetters} from "vuex";
 
     export default {
         name: "artist",
@@ -94,6 +99,10 @@
         },
 
         computed: {
+            ...mapGetters({
+                user: 'user',
+            }),
+
             albums() {
                 return _.orderBy(this.artist.albums, ['release_date'], ['desc']);
             },
