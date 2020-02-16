@@ -32,7 +32,7 @@ class SpotifyService implements SpotifyServiceContract
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function api(): SpotifyWebAPI
     {
@@ -47,7 +47,7 @@ class SpotifyService implements SpotifyServiceContract
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getToken(): string
     {
@@ -58,12 +58,13 @@ class SpotifyService implements SpotifyServiceContract
             );
 
             $session->requestCredentialsToken();
+
             return $session->getAccessToken();
         });
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function parseArtist(string $uri): string
     {
@@ -75,7 +76,7 @@ class SpotifyService implements SpotifyServiceContract
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function addArtist(string $uri, bool $importAlbums = false): Artist
     {
@@ -88,7 +89,7 @@ class SpotifyService implements SpotifyServiceContract
 
         if ($importAlbums) {
             $albums = $this->api()->getArtistAlbums($artist->id);
-            collect($albums->items)->each(function ($album)  use ($artistModel) {
+            collect($albums->items)->each(function ($album) use ($artistModel) {
                 Album::create([
                     'name_en' => $album->name,
                     'spotify_image' => $album->images[0]->url,

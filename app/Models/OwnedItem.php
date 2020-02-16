@@ -27,7 +27,7 @@ class OwnedItem extends Model
     }
 
     /**
-     * The entity this corresponds to (Album, Photocard)
+     * The entity this corresponds to (Album, Photocard).
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
