@@ -70,6 +70,7 @@
                                          :versions="versions"/>
                         <RemoveFromCollection v-if="showRemove"
                                               :item="owned" />
+                        <SetFavorite column="favorite_album" :id="album.id" />
                     </p>
                 </div>
             </div>
@@ -81,6 +82,7 @@
     import moment from "moment";
     import AddToCollection from "./AddToCollection";
     import RemoveFromCollection from "./RemoveFromCollection";
+    import SetFavorite from "./SetFavorite";
 
     export default {
         props: ['album', 'owned', 'showAdd', 'showRemove'],
@@ -88,6 +90,7 @@
         components: {
             AddToCollection,
             RemoveFromCollection,
+            SetFavorite,
         },
 
         computed: {

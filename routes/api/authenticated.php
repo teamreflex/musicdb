@@ -6,6 +6,7 @@ Route::group([
     'middleware' => 'auth:airlock',
 ], function () {
     Route::get('/user', 'UserController@current');
+    Route::put('/user', 'UserController@update');
 
     // API resources
     Route::apiResource('artist', 'ArtistController')->except(['index', 'show']);

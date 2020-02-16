@@ -12,6 +12,10 @@
                     <p class="card-text text-muted" v-if="member.name_en">
                         Name: {{ member.name_en }} <span v-if="member.name_kr">({{ member.name_kr }})</span>
                     </p>
+
+                    <p class="card-text d-flex">
+                        <SetFavorite column="favorite_member" :id="member.id" />
+                    </p>
                 </div>
 
                 <div class="card-footer">
@@ -35,7 +39,11 @@
 </template>
 
 <script>
+    import SetFavorite from "./SetFavorite";
+
     export default {
         props: ['member'],
+
+        components: {SetFavorite},
     }
 </script>

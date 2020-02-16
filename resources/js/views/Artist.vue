@@ -21,9 +21,13 @@
                         </div>
 
                         <template v-if="artist && ! busy">
-                            <div class="row">
+                            <div class="row no-gutters">
                                 <div class="col-4">
                                     <h3 class="text-white">{{ artist.name_en }}</h3>
+                                </div>
+
+                                <div class="col-4">
+                                    <SetFavorite column="favorite_artist" :id="artist.id" />
                                 </div>
                             </div>
 
@@ -87,11 +91,13 @@
     import SubunitCard from "./components/SubunitCard";
     import MemberCard from "./components/MemberCard";
     import {mapGetters} from "vuex";
+    import SetFavorite from "./components/SetFavorite";
 
     export default {
         name: "artist",
 
         components: {
+            SetFavorite,
             MemberCard,
             SubunitCard,
             AlbumCard,
