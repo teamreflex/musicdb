@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
@@ -44,7 +45,7 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
-            Gravatar::make(),
+            Boolean::make('Admin', 'is_admin'),
 
             Text::make('Username')
                 ->sortable()

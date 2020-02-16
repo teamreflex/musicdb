@@ -23,6 +23,7 @@ class User extends Authenticatable
         'favorite_artist',
         'favorite_album',
         'favorite_member',
+        'is_admin',
     ];
 
     /**
