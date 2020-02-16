@@ -1,4 +1,5 @@
 ![phpunit](https://github.com/teamreflex/musicdb/workflows/phpunit/badge.svg)
+[![StyleCI](https://github.styleci.io/repos/211292882/shield?branch=master)](https://github.styleci.io/repos/211292882)
 
 ## Requirements
 - PHP 7.4
