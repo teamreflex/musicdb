@@ -44,7 +44,7 @@ class MemberControllerTest extends TestCase
     {
         $member = factory(Member::class)->create();
 
-        $res = $this->json('get', '/api/member/' . $member->id);
+        $res = $this->json('get', '/api/member/'.$member->id);
 
         $this->assertEquals($member->name_en, $res->json('data.name_en'));
     }
@@ -55,7 +55,7 @@ class MemberControllerTest extends TestCase
 
         $member = factory(Member::class)->create();
 
-        $this->json('put', '/api/member/' . $member->id, [
+        $this->json('put', '/api/member/'.$member->id, [
             'artist_id' => $member->artist_id,
             'name_en' => 'test',
             'stage_name_en' => 'test',
@@ -72,7 +72,7 @@ class MemberControllerTest extends TestCase
 
         $member = factory(Member::class)->create();
 
-        $this->json('delete', '/api/member/' . $member->id);
+        $this->json('delete', '/api/member/'.$member->id);
 
         $this->assertDatabaseMissing('members', [
             'id' => $member->id,

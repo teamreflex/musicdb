@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Models\Artist;
 use App\Models\Album;
+use App\Models\Artist;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -43,7 +43,7 @@ class AlbumControllerTest extends TestCase
     {
         $album = factory(Album::class)->create();
 
-        $res = $this->json('get', '/api/album/' . $album->id);
+        $res = $this->json('get', '/api/album/'.$album->id);
 
         $this->assertEquals($album->name_en, $res->json('data.name_en'));
     }
@@ -54,7 +54,7 @@ class AlbumControllerTest extends TestCase
 
         $album = factory(Album::class)->create();
 
-        $this->json('put', '/api/album/' . $album->id, [
+        $this->json('put', '/api/album/'.$album->id, [
             'artist_id' => $album->artist_id,
             'name_en' => 'test',
         ]);
@@ -70,7 +70,7 @@ class AlbumControllerTest extends TestCase
 
         $album = factory(Album::class)->create();
 
-        $this->json('delete', '/api/album/' . $album->id);
+        $this->json('delete', '/api/album/'.$album->id);
 
         $this->assertDatabaseMissing('albums', [
             'id' => $album->id,

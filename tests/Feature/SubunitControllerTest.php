@@ -43,7 +43,7 @@ class SubunitControllerTest extends TestCase
     {
         $subunit = factory(Subunit::class)->create();
 
-        $res = $this->json('get', '/api/subunit/' . $subunit->id);
+        $res = $this->json('get', '/api/subunit/'.$subunit->id);
 
         $this->assertEquals($subunit->name_en, $res->json('data.name_en'));
     }
@@ -54,7 +54,7 @@ class SubunitControllerTest extends TestCase
 
         $subunit = factory(Subunit::class)->create();
 
-        $this->json('put', '/api/subunit/' . $subunit->id, [
+        $this->json('put', '/api/subunit/'.$subunit->id, [
             'artist_id' => $subunit->artist_id,
             'name_en' => 'test',
         ]);
@@ -70,7 +70,7 @@ class SubunitControllerTest extends TestCase
 
         $subunit = factory(Subunit::class)->create();
 
-        $this->json('delete', '/api/subunit/' . $subunit->id);
+        $this->json('delete', '/api/subunit/'.$subunit->id);
 
         $this->assertDatabaseMissing('subunits', [
             'id' => $subunit->id,

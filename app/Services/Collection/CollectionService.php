@@ -8,7 +8,7 @@ use App\Models\User;
 class CollectionService implements CollectionServiceContract
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function add(User $user, string $type, int $id, array $data = []): OwnedItem
     {
@@ -31,7 +31,7 @@ class CollectionService implements CollectionServiceContract
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function remove(User $user, OwnedItem $ownedItem): bool
     {
