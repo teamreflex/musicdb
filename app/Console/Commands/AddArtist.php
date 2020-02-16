@@ -49,6 +49,4 @@ class AddArtist extends Command
 
         $this->info("Added \"{$artist->name_en}\" with {$artist->albums()->count()} albums.");
     }
-
-
 }

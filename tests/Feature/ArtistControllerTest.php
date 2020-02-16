@@ -39,7 +39,7 @@ class ArtistControllerTest extends TestCase
     {
         $artist = factory(Artist::class)->create();
 
-        $res = $this->json('get', '/api/artist/' . $artist->id);
+        $res = $this->json('get', '/api/artist/'.$artist->id);
 
         $this->assertEquals($artist->name_en, $res->json('data.name_en'));
     }
@@ -50,7 +50,7 @@ class ArtistControllerTest extends TestCase
 
         $artist = factory(Artist::class)->create();
 
-        $this->json('put', '/api/artist/' . $artist->id, [
+        $this->json('put', '/api/artist/'.$artist->id, [
             'name_en' => 'test',
         ]);
 
@@ -65,7 +65,7 @@ class ArtistControllerTest extends TestCase
 
         $artist = factory(Artist::class)->create();
 
-        $this->json('delete', '/api/artist/' . $artist->id);
+        $this->json('delete', '/api/artist/'.$artist->id);
 
         $this->assertDatabaseMissing('artists', [
             'id' => $artist->id,
