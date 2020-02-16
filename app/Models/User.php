@@ -17,7 +17,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password',
+        'username',
+        'email',
+        'password',
+        'favorite_artist',
+        'favorite_album',
+        'favorite_member',
     ];
 
     /**
@@ -46,5 +51,35 @@ class User extends Authenticatable
     public function collection()
     {
         return $this->hasMany(OwnedItem::class);
+    }
+
+    /**
+     * This user's favorite artist.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function favoriteArtist()
+    {
+        return $this->belongsTo(Artist::class, 'favorite_artist');
+    }
+
+    /**
+     * This user's favorite album.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function favoriteAlbum()
+    {
+        return $this->belongsTo(Album::class, 'favorite_album');
+    }
+
+    /**
+     * This user's favorite member.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function favoriteMember()
+    {
+        return $this->belongsTo(Member::class, 'favorite_member');
     }
 }

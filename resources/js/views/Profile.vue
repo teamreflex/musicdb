@@ -23,18 +23,28 @@
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
                                     <a href="#">
-                                        <img v-lazy="'/img/theme/team-4-800x800.jpg'" class="rounded-circle">
+                                        <img v-lazy="user.image || '/img/user.jpg'" class="rounded-circle profile-image">
                                     </a>
                                 </div>
                             </div>
                             <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                                 <div class="card-profile-actions py-4 mt-lg-0">
-                                    <router-link class="btn btn-default btn-sm mr-4" :to="{ name: 'artist', params: {artistId: 7} }">
-                                        <fa-icon icon="heart" /> LOONA
+                                    <router-link v-if="user.favorite_artist"
+                                                 class="btn btn-default btn-sm"
+                                                 :to="{ name: 'artist', params: {artistId: user.favorite_artist.id} }">
+                                        <fa-icon icon="heart" /> {{ user.favorite_artist.name_en }}
                                     </router-link>
 
-                                    <router-link class="btn btn-danger btn-sm mr-4" :to="{ name: 'artist', params: {artistId: 7} }">
-                                        <fa-icon icon="heart" /> Kim Lip
+                                    <router-link v-if="user.favorite_album"
+                                                 class="btn btn-info btn-sm"
+                                                 :to="{ name: 'artist', params: {artistId: user.favorite_album.artist_id} }">
+                                        <fa-icon icon="heart" /> {{ user.favorite_album.name_en }}
+                                    </router-link>
+
+                                    <router-link v-if="user.favorite_member"
+                                                 class="btn btn-danger btn-sm"
+                                                 :to="{ name: 'artist', params: {artistId: user.favorite_member.artist_id} }">
+                                        <fa-icon icon="heart" /> {{ user.favorite_member.stage_name_en }}
                                     </router-link>
                                 </div>
                             </div>

@@ -63,7 +63,11 @@
                                                     Members
                                                   </span>
 
-                                                <p class="description">Coming soon.</p>
+                                                <p class="description text-center" v-if="artist.members.length === 0">
+                                                    {{ artist.name_en }} has no members.
+                                                </p>
+
+                                                <MemberCard v-for="member in artist.members" :key="'member-' + member.id" :member="member" />
                                             </tab-pane>
                                         </card>
                                     </tabs>
@@ -81,12 +85,14 @@
     import TabPane from "../components/Tabs/TabPane";
     import AlbumCard from "./components/AlbumCard";
     import SubunitCard from "./components/SubunitCard";
+    import MemberCard from "./components/MemberCard";
     import {mapGetters} from "vuex";
 
     export default {
         name: "artist",
 
         components: {
+            MemberCard,
             SubunitCard,
             AlbumCard,
             Tabs,

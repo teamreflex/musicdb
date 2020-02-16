@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    protected array $profileRelations = [
+        'collection.collectable',
+        'favoriteArtist',
+        'favoriteAlbum',
+        'favoriteMember',
+    ];
+
     /**
      * Return the current user.
      *
@@ -30,7 +37,7 @@ class UserController extends Controller
      */
     public function profile(Request $request, string $username): JsonResponse
     {
-        $user = User::with('collection.collectable')->where('username', '=', $username)->first();
+        $user = User::with($this->profileRelations)->where('username', '=', $username)->first();
 
         return $this->response->json([
             'data' => $user,
