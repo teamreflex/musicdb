@@ -1,6 +1,6 @@
 <template>
     <div>
-        <base-button size="sm" type="danger" @click="favorite" :disabled="busy">
+        <base-button size="sm" class="btn-favorite" @click="favorite" :disabled="busy">
             <span v-if="busy">
                 <fa-icon spin icon="spinner" />
             </span>
@@ -44,3 +44,32 @@
         },
     }
 </script>
+
+
+<style>
+    .btn-favorite {
+        color: #fff;
+        background-color: #f4028e;
+        border-color: #f4028e;
+    }
+
+    /** lighter */
+    .btn-favorite:hover {
+        color: #fff;
+        background-color: #f4028e;
+        border-color: #f4028e;
+    }
+
+    .btn-favorite:focus, .btn-favorite.focus {
+        color: #fff;
+        background-color: #f4028e;
+        border-color: #f4028e;
+        box-shadow: 0 0 0 0.2rem rgba(134, 0, 83, 0.5);
+    }
+
+    .btn-danger.disabled, .btn-danger:disabled {
+        color: #fff;
+        background-color: #f4028e;
+        border-color: #f4028e;
+    }
+</style>
