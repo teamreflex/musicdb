@@ -41,7 +41,7 @@ class MemberPolicy
      */
     public function create(?User $user): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 
     /**
@@ -53,7 +53,7 @@ class MemberPolicy
      */
     public function update(?User $user, Member $member): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 
     /**
@@ -65,7 +65,7 @@ class MemberPolicy
      */
     public function delete(?User $user, Member $member): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 
     /**
@@ -77,7 +77,7 @@ class MemberPolicy
      */
     public function restore(?User $user, Member $member): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 
     /**
@@ -89,6 +89,6 @@ class MemberPolicy
      */
     public function forceDelete(?User $user, Member $member): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 }

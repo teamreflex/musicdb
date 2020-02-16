@@ -12,7 +12,8 @@
         "fideloper/proxy": "^4.0",
         "jwilsson/spotify-web-api-php": "^3.0",
         "laravel/airlock": "^0.2",
-        "laravel/framework": "^6.0"
+        "laravel/framework": "^6.0",
+        "laravel/nova": "~2.0"
     },
     "require-dev": {
         "doctrine/dbal": "^2.10",
@@ -48,6 +49,12 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
@@ -58,6 +65,9 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan nova:publish"
         ]
     }
 }

@@ -41,7 +41,7 @@ class ArtistPolicy
      */
     public function create(?User $user): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 
     /**
@@ -53,7 +53,7 @@ class ArtistPolicy
      */
     public function update(?User $user, Artist $artist): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 
     /**
@@ -65,7 +65,7 @@ class ArtistPolicy
      */
     public function delete(?User $user, Artist $artist): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 
     /**
@@ -77,7 +77,7 @@ class ArtistPolicy
      */
     public function restore(?User $user, Artist $artist): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 
     /**
@@ -89,6 +89,6 @@ class ArtistPolicy
      */
     public function forceDelete(?User $user, Artist $artist): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 }

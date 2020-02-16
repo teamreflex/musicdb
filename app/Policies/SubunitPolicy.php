@@ -41,7 +41,7 @@ class SubunitPolicy
      */
     public function create(?User $user): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 
     /**
@@ -53,7 +53,7 @@ class SubunitPolicy
      */
     public function update(?User $user, Subunit $subunit): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 
     /**
@@ -65,7 +65,7 @@ class SubunitPolicy
      */
     public function delete(?User $user, Subunit $subunit): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 
     /**
@@ -77,7 +77,7 @@ class SubunitPolicy
      */
     public function restore(?User $user, Subunit $subunit): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 
     /**
@@ -89,6 +89,6 @@ class SubunitPolicy
      */
     public function forceDelete(?User $user, Subunit $subunit): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 }

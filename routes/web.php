@@ -3,4 +3,4 @@
 /**
  * Catch-all route for the SPA to function.
  */
-Route::get('{any}', 'LayoutController@layout')->where('any', '.*');
+Route::get('{any}', 'LayoutController@layout')->where('any', '^(?!admin|nova).*');

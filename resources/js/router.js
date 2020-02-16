@@ -79,6 +79,11 @@ export default new Router({
                 footer: AppFooter
             }
         },
+
+        {
+            path: "*",
+            redirect: '/',
+        },
     ],
     scrollBehavior: to => {
         if (to.hash) {

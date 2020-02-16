@@ -41,7 +41,7 @@ class PhotocardPolicy
      */
     public function create(?User $user): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 
     /**
@@ -53,7 +53,7 @@ class PhotocardPolicy
      */
     public function update(?User $user, Photocard $photocard): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 
     /**
@@ -65,7 +65,7 @@ class PhotocardPolicy
      */
     public function delete(?User $user, Photocard $photocard): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 
     /**
@@ -77,7 +77,7 @@ class PhotocardPolicy
      */
     public function restore(?User $user, Photocard $photocard): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 
     /**
@@ -89,6 +89,6 @@ class PhotocardPolicy
      */
     public function forceDelete(?User $user, Photocard $photocard): bool
     {
-        return true;
+        return optional($user)->is_admin;
     }
 }
