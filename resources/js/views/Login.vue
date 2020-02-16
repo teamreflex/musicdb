@@ -69,6 +69,8 @@
     </div>
 </template>
 <script>
+    import {mapMutations} from "vuex";
+
     export default {
         data() {
             return {
@@ -80,16 +82,32 @@
         },
 
         methods: {
+            ...mapMutations({
+                setUser: 'setUser',
+            }),
+
             login() {
                 axios.get('/airlock/csrf-cookie')
                     .then(response => {
                         axios.post('/api/login', this.form)
                             .then(response => {
-                                console.log(response);
+                                this.fetchUser();
                             })
                             .catch(error => {
                                 console.log(error);
-                            })
+                            });
+                    });
+            },
+
+            fetchUser() {
+                axios.get('/api/user')
+                    .then(response => {
+                        this.setUser(response.data.data);
+
+                        this.$router.push({ name: 'home' });
+                    })
+                    .catch(error => {
+                        console.log(error);
                     });
             },
         }

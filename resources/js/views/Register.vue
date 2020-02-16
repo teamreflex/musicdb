@@ -71,6 +71,8 @@
     </div>
 </template>
 <script>
+    import {mapMutations} from "vuex";
+
     export default {
         data() {
             return {
@@ -84,14 +86,30 @@
         },
 
         methods: {
+            ...mapMutations({
+                setUser: 'setUser',
+            }),
+
             register() {
                 axios.post('/api/register', this.form)
                     .then(response => {
-                        console.log(response);
+                        this.fetchUser();
                     })
                     .catch(error => {
                         console.log(error);
                     })
+            },
+
+            fetchUser() {
+                axios.get('/api/user')
+                    .then(response => {
+                        this.setUser(response.data.data);
+
+                        this.$router.push({ name: 'home' });
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
             },
         }
     };
