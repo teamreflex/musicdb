@@ -7,7 +7,10 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">{{ member.stage_name_en }} <span v-if="member.stage_name_kr">({{ member.stage_name_kr }})</span></h5>
+                    <h2 class="card-title">
+                        {{ member.stage_name_en }}
+                        <small class="text-muted" v-if="member.stage_name_kr">{{ member.stage_name_kr }}</small>
+                    </h2>
 
                     <p class="card-text text-muted" v-if="member.name_en">
                         Name: {{ member.name_en }} <span v-if="member.name_kr">({{ member.name_kr }})</span>

@@ -5,14 +5,18 @@
                 <img v-lazy="artist.spotify_image" :alt="artist.name_en"
                      class="card-img img-fluid" />
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 d-flex flex-column">
                 <div class="card-body">
-                    <h5 class="card-title">{{ artist.name_en }} <span v-if="artist.name_kr">({{ artist.name_kr }})</span></h5>
+                    <h2 class="card-title">
+                        {{ artist.name_en }}
+                        <small class="text-muted" v-if="artist.name_kr">{{ artist.name_kr }}</small>
+                    </h2>
+
                     <p class="card-text">{{ artist.description }}</p>
                 </div>
 
-                <div class="card-footer">
-                    <div class="pull-left">
+                <div class="card-footer d-flex justify-content-between">
+                    <div>
                         <span v-if="artist.twitter">
                             <a :href="'https://twitter.com/' + artist.twitter" target="_blank"><fa-icon :icon="['fab', 'twitter']" /></a>
                         </span>
@@ -38,7 +42,7 @@
                         </span>
                     </div>
 
-                    <div class="pull-right">
+                    <div>
                         <router-link :to="{ name: 'artist', params: {artistId: artist.id} }"
                                      class="btn btn-info btn-sm mb-3 mb-sm-0">
                             <fa-icon icon="music" /> View

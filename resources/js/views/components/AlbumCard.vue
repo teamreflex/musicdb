@@ -7,7 +7,10 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body justify-content-left">
-                    <h5 class="card-title">{{ album.name_en }} <span v-if="album.name_kr">({{ album.name_kr }})</span></h5>
+                    <h2 class="card-title">
+                        {{ album.name_en }}
+                        <small class="text-muted" v-if="album.name_kr">{{ album.name_kr }}</small>
+                    </h2>
 
                     <p class="cart-text text-muted">
                         <!-- Acquired at -->
