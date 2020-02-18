@@ -3,7 +3,9 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 
@@ -51,9 +53,23 @@ class Artist extends Resource
                 ->sortable()
                 ->rules('max:255'),
 
-            Text::make('Spotify ID', 'spotify_id')
-                ->rules('max:255')
-                ->hideFromIndex(),
+            Boolean::make('Spotify ID', function () {
+                return $this->spotify_id;
+            }),
+
+            Boolean::make('Spotify Image', function () {
+                return $this->spotify_image;
+            }),
+
+            Image::make('Image')
+                ->nullable()
+                ->hideFromIndex()
+                ->disk('s3'),
+
+            Image::make('Logo')
+                ->nullable()
+                ->hideFromIndex()
+                ->disk('s3'),
 
             Textarea::make('Description')
                 ->hideFromIndex(),

@@ -29,6 +29,7 @@ import {
     faStar,
     faShoppingCart,
     faCalendar,
+    faUserShield,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -56,6 +57,7 @@ library.add(
     faStar,
     faShoppingCart,
     faCalendar,
+    faUserShield,
 );
 
 export default FontAwesomeIcon;

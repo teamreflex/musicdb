@@ -4,25 +4,28 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 
-class Member extends Resource
+class Album extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Member::class;
+    public static $model = \App\Models\Album::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'stage_name_en';
+    public static $title = 'name_en';
 
     /**
      * The columns that should be searched.
@@ -30,7 +33,7 @@ class Member extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'stage_name_en', 'stage_name_kr', 'name_en', 'name_kr',
+        'id', 'name_en', 'name_kr',
     ];
 
     /**
@@ -51,28 +54,47 @@ class Member extends Resource
                 ->sortable()
                 ->nullable(),
 
-            Image::make('Image')
+            Boolean::make('Spotify ID', function () {
+                return $this->spotify_id;
+            }),
+
+            Boolean::make('Spotify Image', function () {
+                return $this->spotify_image;
+            }),
+
+            Image::make('Cover Art')
                 ->nullable()
                 ->hideFromIndex()
                 ->disk('s3'),
 
-            Text::make('Stage Name (English)', 'stage_name_en')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Stage Name (Korean)', 'stage_name_kr')
-                ->sortable()
-                ->rules('max:255')
-                ->hideFromIndex(),
+            Image::make('Album Image')
+                ->nullable()
+                ->hideFromIndex()
+                ->disk('s3'),
 
             Text::make('Name (English)', 'name_en')
                 ->sortable()
-                ->rules('max:255')
-                ->hideFromIndex(),
+                ->rules('required', 'max:255'),
 
             Text::make('Name (Korean)', 'name_kr')
                 ->sortable()
                 ->rules('max:255')
+                ->hideFromIndex(),
+
+            Textarea::make('Description')
+                ->nullable()
+                ->hideFromIndex(),
+
+            Date::make('Release Date')
+                ->sortable()
+                ->rules('required'),
+
+            Text::make('Version')
+                ->sortable()
+                ->nullable(),
+
+            Boolean::make('Primary Version')
+                ->sortable()
                 ->hideFromIndex(),
         ];
     }

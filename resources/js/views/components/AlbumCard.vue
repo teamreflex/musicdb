@@ -2,7 +2,7 @@
     <div class="card mb-3">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img v-lazy="album.cover_art || album.spotify_image" :alt="album.name_en"
+                <img v-lazy="image" :alt="album.name_en"
                      class="card-img img-fluid" />
             </div>
             <div class="col-md-8">
@@ -97,6 +97,17 @@
         },
 
         computed: {
+            image() {
+                if (this.album.cover_art) {
+                    return this.$asset.url(this.album.cover_art);
+                }
+
+                return this.album.spotify_image
+                    || (this.album.album_image
+                    ? this.$asset.url(this.album.album_image)
+                    : '/img/album.jpg');
+            },
+
             release() {
                 return moment(this.album.release_date).format('Do MMMM YYYY');
             },

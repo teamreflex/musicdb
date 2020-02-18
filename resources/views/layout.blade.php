@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+
+        <script>
+            window.ASSET_URL = '{{ config('app.asset_url') }}';
+        </script>
     </head>
     <body>
         <div id="app"></div>

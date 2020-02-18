@@ -4,7 +4,9 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
 
 class Subunit extends Resource
@@ -43,7 +45,8 @@ class Subunit extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('Artist'),
+            BelongsTo::make('Artist')
+                ->sortable(),
 
             Text::make('Name (English)', 'name_en')
                 ->sortable()
@@ -52,6 +55,24 @@ class Subunit extends Resource
             Text::make('Name (Korean)', 'name_kr')
                 ->sortable()
                 ->rules('max:255'),
+
+            Boolean::make('Spotify ID', function () {
+                return $this->spotify_id;
+            }),
+
+            Boolean::make('Spotify Image', function () {
+                return $this->spotify_image;
+            }),
+
+            Image::make('Image')
+                ->nullable()
+                ->hideFromIndex()
+                ->disk('s3'),
+
+            Image::make('Logo')
+                ->nullable()
+                ->hideFromIndex()
+                ->disk('s3'),
         ];
     }
 

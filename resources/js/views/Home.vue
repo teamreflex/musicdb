@@ -17,7 +17,10 @@
                 <div class="container shape-container d-flex">
                     <div class="col px-0">
                         <div class="row">
-                            <h1 class="display-3 text-white">Home</h1>
+                            <div class="col-lg-6">
+                                <h1 class="display-3 text-white">Home</h1>
+                                <p class="lead text-white">work in progress, nothing to see here, carry on</p>
+                            </div>
                         </div>
                     </div>
                 </div>

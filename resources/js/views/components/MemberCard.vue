@@ -2,7 +2,7 @@
     <div class="card mb-3">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img v-lazy="member.image || '/img/member.jpg'" :alt="member.stage_name_en"
+                <img v-lazy="image" :alt="member.stage_name_en"
                      class="card-img img-fluid" />
             </div>
             <div class="col-md-8">
@@ -48,5 +48,11 @@
         props: ['member'],
 
         components: {SetFavorite},
+
+        computed: {
+            image() {
+                return this.member.image ? this.$asset.url(this.member.image) : '/img/member.jpg';
+            },
+        },
     }
 </script>

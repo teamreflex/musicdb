@@ -66,9 +66,8 @@
                             </div>
                         </div>
                         <div class="text-center mt-5">
-                            <h3>{{ user.username }}
-                            </h3>
-                            <div class="h6 font-weight-300"><fa-icon icon="map-marker-alt" /> Auckland, New Zealand</div>
+                            <h3>{{ user.username }}</h3>
+<!--                            <div class="h6 font-weight-300"><fa-icon icon="map-marker-alt" /> Auckland, New Zealand</div>-->
                         </div>
                         <div class="mt-5 py-5 border-top">
                             <div class="row justify-content-center">

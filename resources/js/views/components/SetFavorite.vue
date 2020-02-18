@@ -1,6 +1,6 @@
 <template>
     <div>
-        <base-button size="sm" class="btn-favorite" @click="favorite" :disabled="busy">
+        <base-button size="sm" type="favorite" class="btn-favorite" @click="favorite" :disabled="busy">
             <span v-if="busy">
                 <fa-icon spin icon="spinner" />
             </span>

@@ -40,6 +40,14 @@
                     </router-link>
                 </li>
 
+                <!-- Admin -->
+                <li class="nav-item" v-if="user && user.is_admin">
+                    <a class="nav-link nav-link-icon" href="/admin">
+                        <fa-icon icon="user-shield" />
+                        <span class="nav-link-inner--text d-lg-none">Admin</span>
+                    </a>
+                </li>
+
                 <!-- Logout -->
                 <li class="nav-item" v-if="user">
                     <span class="nav-link nav-link-icon" @click="logout">
