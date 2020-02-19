@@ -5,18 +5,17 @@
                 <img v-lazy="image" :alt="subunit.name_en"
                      class="card-img img-fluid" />
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 d-flex flex-column">
                 <div class="card-body">
                     <h5 class="card-title">{{ subunit.name_en }} <span v-if="subunit.name_kr">({{ subunit.name_kr }})</span></h5>
+                </div>
 
-                    <p class="card-text text-muted" v-if="subunit.spotify_id">
-                        <a :href="'https://open.spotify.com/artist/' + subunit.spotify_id"
-                           target="_blank"
-                           class="btn btn-success btn-sm"
-                           v-if="subunit.spotify_id">
-                            <fa-icon :icon="['fab', 'spotify']" /> View on Spotify
-                        </a>
-                    </p>
+                <div class="card-footer d-flex justify-content-start">
+                    <a :href="'https://open.spotify.com/artist/' + subunit.spotify_id"
+                       target="_blank"
+                       v-if="subunit.spotify_id">
+                        <fa-icon :icon="['fab', 'spotify']" />
+                    </a>
                 </div>
             </div>
         </div>

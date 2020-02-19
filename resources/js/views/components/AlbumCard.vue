@@ -7,7 +7,7 @@
                          class="card-img img-fluid" />
                 </router-link>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 d-flex flex-column">
                 <div class="card-body justify-content-left">
                     <h2 class="card-title">
                         <router-link class="album-name" :to="{ name: 'artist', params: { artistId: album.artist_id } }">
@@ -60,15 +60,18 @@
                             {{ version.version || version.name_en }}
                         </badge>
                     </p>
+                </div>
 
-                    <p class="card-text d-flex">
+                <div class="card-footer d-flex justify-content-between">
+                    <div>
                         <a :href="'https://open.spotify.com/album/' + album.spotify_id"
                            target="_blank"
-                           class="btn btn-success btn-sm"
                            v-if="album.spotify_id">
-                            <fa-icon :icon="['fab', 'spotify']" /> View on Spotify
+                            <fa-icon :icon="['fab', 'spotify']" />
                         </a>
+                    </div>
 
+                    <div class="d-flex">
                         <AddToCollection v-if="showAdd"
                                          :id="album.id"
                                          type="album"
@@ -76,10 +79,12 @@
                                          :signed="true"
                                          :promo="true"
                                          :versions="versions"/>
+
                         <RemoveFromCollection v-if="showRemove"
                                               :item="owned" />
+
                         <SetFavorite column="favorite_album" :id="album.id" />
-                    </p>
+                    </div>
                 </div>
             </div>
         </div>
