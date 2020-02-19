@@ -26,7 +26,7 @@
                         </badge>
 
                         <!-- Promo album? -->
-                        <badge v-if="owned && album.version && promo"
+                        <badge v-if="promo"
                                type="warning"
                                v-b-tooltip.hover.top
                                title="Promotional album, given out to radio stations, directors etc.">
@@ -34,7 +34,7 @@
                         </badge>
 
                         <!-- Signed album? -->
-                        <badge v-if="owned && album.version && signed"
+                        <badge v-if="signed"
                                type="success"
                                v-b-tooltip.hover.top
                                title="Album is signed by the artist.">
