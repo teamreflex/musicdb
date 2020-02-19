@@ -24,7 +24,7 @@ class ArtistControllerTest extends TestCase
 
     public function test_artist_can_be_created()
     {
-        Airlock::actingAs(factory(User::class)->create());
+        Airlock::actingAs(factory(User::class)->state('admin')->create());
 
         $this->json('post', '/api/artist', [
             'name_en' => 'test',
@@ -46,7 +46,7 @@ class ArtistControllerTest extends TestCase
 
     public function test_artist_can_be_updated()
     {
-        Airlock::actingAs(factory(User::class)->create());
+        Airlock::actingAs(factory(User::class)->state('admin')->create());
 
         $artist = factory(Artist::class)->create();
 
@@ -61,7 +61,7 @@ class ArtistControllerTest extends TestCase
 
     public function test_artist_can_be_deleted()
     {
-        Airlock::actingAs(factory(User::class)->create());
+        Airlock::actingAs(factory(User::class)->state('admin')->create());
 
         $artist = factory(Artist::class)->create();
 

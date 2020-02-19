@@ -31,6 +31,9 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
       - name: Install Composer dependencies
+        env:
+          NOVA_EMAIL: ${{ secrets.NOVA_EMAIL }}
+          NOVA_KEY: ${{ secrets.NOVA_KEY }}
         run: |
           composer config http-basic.nova.laravel.com ${NOVA_EMAIL} ${NOVA_KEY}
           composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader

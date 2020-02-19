@@ -25,7 +25,7 @@ class MemberControllerTest extends TestCase
 
     public function test_member_can_be_created()
     {
-        Airlock::actingAs(factory(User::class)->create());
+        Airlock::actingAs(factory(User::class)->state('admin')->create());
 
         $artist = factory(Artist::class)->create();
 
@@ -51,7 +51,7 @@ class MemberControllerTest extends TestCase
 
     public function test_member_can_be_updated()
     {
-        Airlock::actingAs(factory(User::class)->create());
+        Airlock::actingAs(factory(User::class)->state('admin')->create());
 
         $member = factory(Member::class)->create();
 
@@ -68,7 +68,7 @@ class MemberControllerTest extends TestCase
 
     public function test_member_can_be_deleted()
     {
-        Airlock::actingAs(factory(User::class)->create());
+        Airlock::actingAs(factory(User::class)->state('admin')->create());
 
         $member = factory(Member::class)->create();
 

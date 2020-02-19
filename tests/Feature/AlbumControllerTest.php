@@ -25,7 +25,7 @@ class AlbumControllerTest extends TestCase
 
     public function test_album_can_be_created()
     {
-        Airlock::actingAs(factory(User::class)->create());
+        Airlock::actingAs(factory(User::class)->state('admin')->create());
 
         $artist = factory(Artist::class)->create();
 
@@ -50,7 +50,7 @@ class AlbumControllerTest extends TestCase
 
     public function test_album_can_be_updated()
     {
-        Airlock::actingAs(factory(User::class)->create());
+        Airlock::actingAs(factory(User::class)->state('admin')->create());
 
         $album = factory(Album::class)->create();
 
@@ -66,7 +66,7 @@ class AlbumControllerTest extends TestCase
 
     public function test_album_can_be_deleted()
     {
-        Airlock::actingAs(factory(User::class)->create());
+        Airlock::actingAs(factory(User::class)->state('admin')->create());
 
         $album = factory(Album::class)->create();
 
