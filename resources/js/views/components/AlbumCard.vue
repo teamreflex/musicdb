@@ -2,14 +2,19 @@
     <div class="card mb-3">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img v-lazy="image" :alt="album.name_en"
-                     class="card-img img-fluid" />
+                <router-link :to="{ name: 'artist', params: { artistId: album.artist_id } }">
+                    <img v-lazy="image" :alt="album.name_en"
+                         class="card-img img-fluid" />
+                </router-link>
             </div>
             <div class="col-md-8">
                 <div class="card-body justify-content-left">
                     <h2 class="card-title">
-                        {{ album.name_en }}
-                        <small class="text-muted" v-if="album.name_kr">{{ album.name_kr }}</small>
+                        <router-link class="album-name" :to="{ name: 'artist', params: { artistId: album.artist_id } }">
+                            {{ album.name_en }}
+                        </router-link>
+                        <small class="text-muted" v-if="album.name_kr">({{ album.name_kr }})</small>
+                        <small class="text-muted" v-if="album.artist">{{ album.artist.name_en }}</small>
                     </h2>
 
                     <p class="cart-text text-muted">
@@ -141,3 +146,9 @@
         },
     }
 </script>
+
+<style>
+    .album-name {
+        color: black;
+    }
+</style>

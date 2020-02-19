@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     protected array $profileRelations = [
-        'collection.collectable',
+        'collection.collectable.artist',
         'favoriteArtist',
         'favoriteAlbum',
         'favoriteMember',
