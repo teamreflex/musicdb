@@ -14,7 +14,9 @@
         "laravel/airlock": "^0.2",
         "laravel/framework": "^6.0",
         "laravel/nova": "~2.0",
-        "league/flysystem-aws-s3-v3": "^1.0"
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "team-reflex/add-artist": "*",
+        "team-reflex/add-album": "*"
     },
     "require-dev": {
         "doctrine/dbal": "^2.10",
@@ -54,6 +56,14 @@
         {
             "type": "composer",
             "url": "https://nova.laravel.com"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/AddArtist"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/AddAlbum"
         }
     ],
     "scripts": {

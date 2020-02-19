@@ -2,6 +2,7 @@
 
 namespace App\Services\Spotify;
 
+use App\Models\Album;
 use App\Models\Artist;
 use SpotifyWebAPI\SpotifyWebAPI;
 
@@ -22,12 +23,13 @@ interface SpotifyServiceContract
     public function getToken(): string;
 
     /**
-     * Parse the artist ID from a URI.
+     * Parse the ID from a URI.
      *
      * @param string $uri
+     * @param string $type
      * @return string
      */
-    public function parseArtist(string $uri): string;
+    public function parse(string $uri, string $type = 'artist'): string;
 
     /**
      * Fetch an artist from Spotify and make it locally.
@@ -37,4 +39,12 @@ interface SpotifyServiceContract
      * @return Artist
      */
     public function addArtist(string $uri, bool $importAlbums = false): Artist;
+
+    /**
+     * Import a single album.
+     *
+     * @param string $album
+     * @return Album
+     */
+    public function addAlbum(string $album): Album;
 }

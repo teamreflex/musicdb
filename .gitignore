@@ -16,3 +16,4 @@ yarn-error.log
 /public/mix-manifest.json
 .env.testing
 /auth.json
+/nova-components/*/dist

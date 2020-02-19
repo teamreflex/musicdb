@@ -8,6 +8,8 @@ use App\Nova\Metrics\Users;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use TeamReflex\AddAlbum\AddAlbum;
+use TeamReflex\AddArtist\AddArtist;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -59,6 +61,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             new Users,
             new Artists,
             new Albums,
+            new AddArtist,
+            new AddAlbum,
         ];
     }
 

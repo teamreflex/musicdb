@@ -6,8 +6,12 @@
         "watch": "npm run development -- --watch",
         "watch-poll": "npm run watch -- --watch-poll",
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "prod": "npm run production && npm run build-add-artist && npm run build-add-album",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "build-add-artist": "cd nova-components/AddArtist && npm run dev",
+        "build-add-artist-prod": "cd nova-components/AddArtist && npm run prod",
+        "build-add-album": "cd nova-components/AddAlbum && npm run dev",
+        "build-add-album-prod": "cd nova-components/AddAlbum && npm run prod"
     },
     "devDependencies": {
         "axios": "^0.19.2",

@@ -66,10 +66,10 @@ class SpotifyService implements SpotifyServiceContract
     /**
      * {@inheritdoc}
      */
-    public function parseArtist(string $uri): string
+    public function parse(string $uri, string $type = 'artist'): string
     {
-        if (Str::startsWith($uri, 'spotify:artist:')) {
-            return Str::replaceFirst('spotify:artist:', '', $uri);
+        if (Str::startsWith($uri, "spotify:{$type}:")) {
+            return Str::replaceFirst("spotify:{$type}:", '', $uri);
         }
 
         return $uri;
@@ -80,26 +80,79 @@ class SpotifyService implements SpotifyServiceContract
      */
     public function addArtist(string $uri, bool $importAlbums = false): Artist
     {
-        $artist = $this->api()->getArtist($this->parseArtist($uri));
-        $artistModel = Artist::create([
-            'name_en' => $artist->name,
-            'spotify_id' => $artist->id,
-            'spotify_image' => $artist->images[0]->url ?? null,
-        ]);
+        $parsed = $this->parse($uri);
+        $artist = $this->api()->getArtist($parsed);
+
+        // fetch existing if it exists
+        $artistModel = Artist::where('spotify_id', $parsed)->first();
+        if (! $artistModel) {
+            $artistModel = Artist::create([
+                'name_en' => $artist->name,
+                'spotify_id' => $artist->id,
+                'spotify_image' => $artist->images[0]->url ?? null,
+            ]);
+        }
 
         if ($importAlbums) {
-            $albums = $this->api()->getArtistAlbums($artist->id);
-            collect($albums->items)->each(function ($album) use ($artistModel) {
-                Album::create([
-                    'name_en' => $album->name,
-                    'spotify_image' => $album->images[0]->url,
-                    'artist_id' => $artistModel->id,
-                    'spotify_id' => $album->id,
-                    'release_date' => $album->release_date,
-                ]);
-            });
+            $this->importAlbums($artistModel);
         }
 
         return $artistModel;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addAlbum(string $album): Album
+    {
+        $parsed = $this->parse($album, 'album');
+
+        $spotifyAlbum = $this->api()->getAlbum($parsed);
+        $artist = $this->addArtist($spotifyAlbum->artists[0]->uri);
+
+        return $this->createOrUpdateAlbum($artist, $spotifyAlbum);
+    }
+
+    /**
+     * Import: create or update albums.
+     *
+     * @param Artist $artist
+     */
+    protected function importAlbums(Artist $artist): void
+    {
+        $albums = $this->api()->getArtistAlbums($artist->spotify_id);
+
+        collect($albums->items)->each(function ($spotifyAlbum) use ($artist) {
+            $this->createOrUpdateAlbum($artist, $spotifyAlbum);
+        });
+    }
+
+    /**
+     * Update any existing album or create it if it doesn't exist.
+     *
+     * @param Artist $artist
+     * @param $spotifyAlbum
+     * @return Album
+     */
+    protected function createOrUpdateAlbum(Artist $artist, $spotifyAlbum): Album
+    {
+        $albums = Album::where('spotify_id', $spotifyAlbum->id)->get();
+
+        if ($albums->count() > 0) {
+            // update existing album spotify images
+            return $albums->each(function ($localAlbum) use ($spotifyAlbum) {
+                $localAlbum->spotify_image = $spotifyAlbum->images[0]->url;
+                $localAlbum->save();
+            })->first();
+        } else {
+            // otherwise make the album
+            return Album::create([
+                'name_en' => $spotifyAlbum->name,
+                'spotify_image' => $spotifyAlbum->images[0]->url,
+                'artist_id' => $artist->id,
+                'spotify_id' => $spotifyAlbum->id,
+                'release_date' => $spotifyAlbum->release_date,
+            ]);
+        }
     }
 }
