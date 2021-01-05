@@ -14,7 +14,7 @@
         "build-add-album-prod": "cd nova-components/AddAlbum && npm i && npm run prod"
     },
     "devDependencies": {
-        "axios": "^0.19.2",
+        "axios": "^0.21.1",
         "bootstrap-vue": "^2.4.1",
         "cross-env": "^5.1",
         "laravel-mix": "^4.0.7",
